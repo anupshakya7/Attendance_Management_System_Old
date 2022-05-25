@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class Registercontroller extends Controller
@@ -24,7 +25,7 @@ class Registercontroller extends Controller
             'is_staff' => 1,
             'is_active' => 1,
             'is_superuser' => 0,
-            'last_login' => $req->last_login,
+            'last_login' => Carbon::now(),
         ]);
         // }
         // else{

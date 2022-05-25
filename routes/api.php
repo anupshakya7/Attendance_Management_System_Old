@@ -24,3 +24,5 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 Route::post('register', [App\Http\Controllers\Registercontroller::class, 'createuser']);
 // Route::post('login', 'LoginController@userlogin');
 Route::post('login', [App\Http\Controllers\LoginController::class, 'userlogin']);
+Route::get('getemployee', [App\Http\Controllers\EmployeeController::class, 'getemployee']);
+
