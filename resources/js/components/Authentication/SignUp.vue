@@ -77,69 +77,46 @@
                   {{ $v.password.$params.maxLength.max }} letters.
                 </div>
               </div>
-              <div class="mb-3 col-md-12">
-                <label> Is Staff <span class="text-danger">*</span></label>
+
+              <div class="mb-3 col-md-3">
+                <label for="is_staff"
+                  >Is Staff<span class="text-danger">*</span></label
+                >
                 <input
-                  type="text"
-                  name="is_staff"
-                  v-model.trim="$v.is_staff.$model"
-                  :class="{
-                    'is-invalid': validationStatus($v.is_staff),
-                  }"
-                  class="form-control form-control-sm"
-                  placeholder="Enter Is Staff or Not(1 or 0)"
+                  class="ms-3"
+                  type="checkbox"
+                  value="is_staff"
+                  v-model="is_staff"
+                  id="is_staff"
                 />
-                <div v-if="!$v.is_staff.required" class="invalid-feedback">
-                  The Is Staff is required.
-                </div>
               </div>
 
-              <div class="mb-3 col-md-12">
-                <label>Is Active <span class="text-danger">*</span></label>
+              <div class="mb-3 col-md-3">
+                <label for="is_active"
+                  >Is Active<span class="text-danger">*</span></label
+                >
                 <input
-                  type="text"
-                  name="is_active"
-                  v-model="$v.is_active.$model"
-                  :class="{ 'is-invalid': validationStatus($v.is_active) }"
-                  class="form-control form-control-sm"
-                  placeholder="Enter Is Active"
+                  class="ms-3"
+                  type="checkbox"
+                  value="is_active"
+                  v-model="is_active"
+                  id="is_active"
                 />
-                <div v-if="!$v.is_active.required" class="invalid-feedback">
-                  The Is Active is required.
-                </div>
               </div>
 
-              <div class="mb-3 col-md-12">
-                <label>Is Superuser <span class="text-danger">*</span></label>
+              <div class="mb-3 col-md-4">
+                <label for="is_superuser"
+                  >Is Superuser<span class="text-danger">*</span></label
+                >
                 <input
-                  type="text"
-                  name="is_superuser"
-                  v-model="$v.is_superuser.$model"
-                  :class="{ 'is-invalid': validationStatus($v.is_superuser) }"
-                  class="form-control form-control-sm"
-                  placeholder="Enter Is Superuser"
+                  class="ms-3"
+                  type="checkbox"
+                  value="is_superuser"
+                  v-model="is_superuser"
+                  id="is_superuser"
                 />
-                <div v-if="!$v.password.required" class="invalid-feedback">
-                  The Is Superuser is required.
-                </div>
               </div>
-              <div class="mb-3 col-md-12">
-                <label> Last Login <span class="text-danger">*</span></label>
-                <input
-                  type="text"
-                  name="last_login"
-                  v-model.trim="$v.last_login.$model"
-                  :class="{
-                    'is-invalid': validationStatus($v.last_login),
-                  }"
-                  class="form-control form-control-sm"
-                  placeholder="Enter Last Login (date format)"
-                />
-                <div v-if="!$v.last_login.required" class="invalid-feedback">
-                  The Last Login is required.
-                </div>
-              </div>
-              <div class="col-md-12">
+              <div class="col-md-12 mt-4">
                 <button class="btn btn-primary btn-sm float-end">
                   Signup Now
                 </button>
@@ -177,7 +154,6 @@ export default {
       is_staff: "",
       is_active: "",
       is_superuser: "",
-      last_login: "",
     };
   },
   validations: {
@@ -185,18 +161,29 @@ export default {
     name: { required },
     email: { required, email },
     password: { required, minLength: minLength(6), maxLength: maxLength(18) },
-    is_staff: { required },
-    is_active: { required },
-    is_superuser: {
-      required,
-    },
-    last_login: { required },
   },
   methods: {
     validationStatus(validation) {
       return typeof validation != "undefined" ? validation.$error : false;
     },
     async signupHandler() {
+      if (this.is_staff == true) {
+        this.is_staff = 1;
+      } else {
+        this.is_staff = 0;
+      }
+
+      if (this.is_active == true) {
+        this.is_active = 1;
+      } else {
+        this.is_active = 0;
+      }
+
+      if (this.is_superuser == true) {
+        this.is_superuser = 1;
+      } else {
+        this.is_superuser = 0;
+      }
       this.$v.$touch();
       if (this.$v.pendding || this.$v.$error) return;
       let result = await axios.post("http://127.0.0.1:8000/api/register", {
@@ -209,7 +196,7 @@ export default {
         is_superuser: this.is_superuser,
         last_login: this.last_login,
       });
-      console.log("login response :    " + result);
+      console.log(result);
       if (result.status == 201) {
         this.$router.push({ name: "LoginPage" });
       }

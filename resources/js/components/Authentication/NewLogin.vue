@@ -94,8 +94,10 @@ export default {
       if (result.status == 200 && result.data.user) {
         localStorage.setItem("user-data", JSON.stringify(result.data));
         this.$router.push({ name: "HomePage" });
+      } else if (result.data.message == "Username is invalid") {
+        alert("No Username Not Match");
       } else if (result.data.message == "password did not match") {
-        alert("No User Found");
+        alert("No Password Not Match");
       } else {
         alert("Errors");
       }

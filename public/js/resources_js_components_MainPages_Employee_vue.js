@@ -758,6 +758,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -769,16 +783,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       employee: {
-        employeeName: "",
-        departmentName: "",
-        sex: "",
-        birthday: "",
-        nationality: "",
+        name: "",
+        DeptName: "",
+        Gender: "",
+        Birthday: "",
+        minzu: "",
         title: "",
-        officePhone: "",
-        mobile: "",
-        idCard: "",
-        registerDevice: "",
+        FPHONE: "",
+        pager: "",
+        Card: "",
+        SN: "",
         FP: "",
         Transactions: "",
         Picture: ""
@@ -800,7 +814,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       },
       searchEmployee: {
         birthday: "",
-        departmentName: "",
+        DeptName: "",
         employee: ""
       },
       employeeData: [],
@@ -936,14 +950,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_2___default().get("http://localhost:3000/employee");
+                return axios__WEBPACK_IMPORTED_MODULE_2___default().get("http://127.0.0.1:8000/api/getemployee");
 
               case 2:
                 result = _context3.sent;
                 _this3.employeeData = result.data;
-                console.log(result.data);
 
-              case 5:
+              case 4:
               case "end":
                 return _context3.stop();
             }
@@ -961,7 +974,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context4.prev = _context4.next) {
               case 0:
                 _context4.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_2___default().get("http://localhost:3000/employee?birthday=".concat(_this4.searchEmployee.birthday, "&departmentName=").concat(_this4.searchEmployee.departmentName, "&employeeName=").concat(_this4.searchEmployee.employee));
+                return axios__WEBPACK_IMPORTED_MODULE_2___default().post("http://127.0.0.1:8000/api/filteremployeedata?birthday=".concat(_this4.searchEmployee.birthday, "&DeptName=").concat(_this4.searchEmployee.DeptName, "&employee=").concat(_this4.searchEmployee.employee));
 
               case 2:
                 searchResult = _context4.sent;
@@ -1505,115 +1518,69 @@ var render = function () {
                       _c("div", { staticClass: "col-sm-3" }, [
                         _c("label", [_vm._v("Department Name: ")]),
                         _vm._v(" "),
-                        _c(
-                          "select",
-                          {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.searchEmployee.departmentName,
-                                expression: "searchEmployee.departmentName",
-                              },
-                            ],
-                            staticClass: "form-select form-select-sm",
-                            attrs: { "aria-label": "Default select example" },
-                            on: {
-                              change: function ($event) {
-                                var $$selectedVal = Array.prototype.filter
-                                  .call($event.target.options, function (o) {
-                                    return o.selected
-                                  })
-                                  .map(function (o) {
-                                    var val = "_value" in o ? o._value : o.value
-                                    return val
-                                  })
-                                _vm.$set(
-                                  _vm.searchEmployee,
-                                  "departmentName",
-                                  $event.target.multiple
-                                    ? $$selectedVal
-                                    : $$selectedVal[0]
-                                )
-                              },
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.searchEmployee.DeptName,
+                              expression: "searchEmployee.DeptName",
+                            },
+                          ],
+                          staticClass: "form-control form-control-sm",
+                          attrs: {
+                            type: "text",
+                            name: "departmentName",
+                            placeholder: "Enter Department Name",
+                          },
+                          domProps: { value: _vm.searchEmployee.DeptName },
+                          on: {
+                            input: function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.searchEmployee,
+                                "DeptName",
+                                $event.target.value
+                              )
                             },
                           },
-                          [
-                            _c(
-                              "option",
-                              { attrs: { disabled: "", value: "" } },
-                              [_vm._v("Select Department")]
-                            ),
-                            _vm._v(" "),
-                            _vm._l(_vm.searchBar, function (employeeNamess) {
-                              return _c("option", { key: employeeNamess.id }, [
-                                _vm._v(
-                                  "\n                    " +
-                                    _vm._s(employeeNamess.departmentName) +
-                                    "\n                  "
-                                ),
-                              ])
-                            }),
-                          ],
-                          2
-                        ),
+                        }),
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "col-sm-3" }, [
                         _c("label", [_vm._v(" Search Employees ")]),
                         _vm._v(" "),
-                        _c(
-                          "select",
-                          {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.searchEmployee.employee,
-                                expression: "searchEmployee.employee",
-                              },
-                            ],
-                            staticClass: "form-select form-select-sm",
-                            attrs: { "aria-label": "Default select example" },
-                            on: {
-                              change: function ($event) {
-                                var $$selectedVal = Array.prototype.filter
-                                  .call($event.target.options, function (o) {
-                                    return o.selected
-                                  })
-                                  .map(function (o) {
-                                    var val = "_value" in o ? o._value : o.value
-                                    return val
-                                  })
-                                _vm.$set(
-                                  _vm.searchEmployee,
-                                  "employee",
-                                  $event.target.multiple
-                                    ? $$selectedVal
-                                    : $$selectedVal[0]
-                                )
-                              },
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.searchEmployee.employee,
+                              expression: "searchEmployee.employee",
+                            },
+                          ],
+                          staticClass: "form-control form-control-sm",
+                          attrs: {
+                            type: "text",
+                            name: "employeeName",
+                            placeholder: "Enter Employee Name",
+                          },
+                          domProps: { value: _vm.searchEmployee.employee },
+                          on: {
+                            input: function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.searchEmployee,
+                                "employee",
+                                $event.target.value
+                              )
                             },
                           },
-                          [
-                            _c(
-                              "option",
-                              { attrs: { disabled: "", value: "" } },
-                              [_vm._v("Select Employee")]
-                            ),
-                            _vm._v(" "),
-                            _vm._l(_vm.searchBar, function (employeeNames) {
-                              return _c("option", { key: employeeNames.id }, [
-                                _vm._v(
-                                  "\n                    " +
-                                    _vm._s(employeeNames.employeeName) +
-                                    "\n                  "
-                                ),
-                              ])
-                            }),
-                          ],
-                          2
-                        ),
+                        }),
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "col-sm-3" }, [
@@ -2392,31 +2359,25 @@ var render = function () {
                           "tbody",
                           _vm._l(_vm.employeeData, function (employees) {
                             return _c("tr", { key: employees.id }, [
-                              _c("td", [
-                                _vm._v(_vm._s(employees.employeeName)),
-                              ]),
+                              _c("td", [_vm._v(_vm._s(employees.name))]),
                               _vm._v(" "),
-                              _c("td", [
-                                _vm._v(_vm._s(employees.departmentName)),
-                              ]),
+                              _c("td", [_vm._v(_vm._s(employees.DeptName))]),
                               _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(employees.sex))]),
+                              _c("td", [_vm._v(_vm._s(employees.Gender))]),
                               _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(employees.birthday))]),
+                              _c("td", [_vm._v(_vm._s(employees.Birthday))]),
                               _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(employees.nationality))]),
+                              _c("td", [_vm._v(_vm._s(employees.minzu))]),
                               _vm._v(" "),
                               _c("td", [_vm._v(_vm._s(employees.title))]),
                               _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(employees.officePhone))]),
+                              _c("td", [_vm._v(_vm._s(employees.FPHONE))]),
                               _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(employees.mobile))]),
+                              _c("td", [_vm._v(_vm._s(employees.pager))]),
                               _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(employees.idCard))]),
+                              _c("td", [_vm._v(_vm._s(employees.Card))]),
                               _vm._v(" "),
-                              _c("td", [
-                                _vm._v(_vm._s(employees.registerDevice)),
-                              ]),
+                              _c("td", [_vm._v(_vm._s(employees.SN))]),
                               _vm._v(" "),
                               _c("td", [_vm._v(_vm._s(employees.FP))]),
                               _vm._v(" "),

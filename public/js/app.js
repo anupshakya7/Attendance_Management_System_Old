@@ -5410,8 +5410,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this.$router.push({
                     name: "HomePage"
                   });
+                } else if (result.data.message == "Username is invalid") {
+                  alert("No Username Not Match");
                 } else if (result.data.message == "password did not match") {
-                  alert("No User Found");
+                  alert("No Password Not Match");
                 } else {
                   alert("Errors");
                 }
@@ -5597,29 +5599,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -5632,8 +5611,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       password: "",
       is_staff: "",
       is_active: "",
-      is_superuser: "",
-      last_login: ""
+      is_superuser: ""
     };
   },
   validations: {
@@ -5651,18 +5629,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required,
       minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.minLength)(6),
       maxLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.maxLength)(18)
-    },
-    is_staff: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
-    },
-    is_active: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
-    },
-    is_superuser: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
-    },
-    last_login: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
     }
   },
   methods: {
@@ -5678,17 +5644,35 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
+                if (_this.is_staff == true) {
+                  _this.is_staff = 1;
+                } else {
+                  _this.is_staff = 0;
+                }
+
+                if (_this.is_active == true) {
+                  _this.is_active = 1;
+                } else {
+                  _this.is_active = 0;
+                }
+
+                if (_this.is_superuser == true) {
+                  _this.is_superuser = 1;
+                } else {
+                  _this.is_superuser = 0;
+                }
+
                 _this.$v.$touch();
 
                 if (!(_this.$v.pendding || _this.$v.$error)) {
-                  _context.next = 3;
+                  _context.next = 6;
                   break;
                 }
 
                 return _context.abrupt("return");
 
-              case 3:
-                _context.next = 5;
+              case 6:
+                _context.next = 8;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default().post("http://127.0.0.1:8000/api/register", {
                   username: _this.username,
                   name: _this.name,
@@ -5700,9 +5684,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   last_login: _this.last_login
                 });
 
-              case 5:
+              case 8:
                 result = _context.sent;
-                console.log("login response :    " + result);
+                console.log(result);
 
                 if (result.status == 201) {
                   _this.$router.push({
@@ -5710,7 +5694,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   });
                 }
 
-              case 8:
+              case 11:
               case "end":
                 return _context.stop();
             }
@@ -41518,56 +41502,54 @@ var render = function () {
                     : _vm._e(),
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "mb-3 col-md-12" }, [
+                _c("div", { staticClass: "mb-3 col-md-3" }, [
                   _vm._m(4),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
                       {
                         name: "model",
-                        rawName: "v-model.trim",
-                        value: _vm.$v.is_staff.$model,
-                        expression: "$v.is_staff.$model",
-                        modifiers: { trim: true },
+                        rawName: "v-model",
+                        value: _vm.is_staff,
+                        expression: "is_staff",
                       },
                     ],
-                    staticClass: "form-control form-control-sm",
-                    class: {
-                      "is-invalid": _vm.validationStatus(_vm.$v.is_staff),
-                    },
+                    staticClass: "ms-3",
                     attrs: {
-                      type: "text",
-                      name: "is_staff",
-                      placeholder: "Enter Is Staff or Not(1 or 0)",
+                      type: "checkbox",
+                      value: "is_staff",
+                      id: "is_staff",
                     },
-                    domProps: { value: _vm.$v.is_staff.$model },
+                    domProps: {
+                      checked: Array.isArray(_vm.is_staff)
+                        ? _vm._i(_vm.is_staff, "is_staff") > -1
+                        : _vm.is_staff,
+                    },
                     on: {
-                      input: function ($event) {
-                        if ($event.target.composing) {
-                          return
+                      change: function ($event) {
+                        var $$a = _vm.is_staff,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = "is_staff",
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 && (_vm.is_staff = $$a.concat([$$v]))
+                          } else {
+                            $$i > -1 &&
+                              (_vm.is_staff = $$a
+                                .slice(0, $$i)
+                                .concat($$a.slice($$i + 1)))
+                          }
+                        } else {
+                          _vm.is_staff = $$c
                         }
-                        _vm.$set(
-                          _vm.$v.is_staff,
-                          "$model",
-                          $event.target.value.trim()
-                        )
-                      },
-                      blur: function ($event) {
-                        return _vm.$forceUpdate()
                       },
                     },
                   }),
-                  _vm._v(" "),
-                  !_vm.$v.is_staff.required
-                    ? _c("div", { staticClass: "invalid-feedback" }, [
-                        _vm._v(
-                          "\n                The Is Staff is required.\n              "
-                        ),
-                      ])
-                    : _vm._e(),
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "mb-3 col-md-12" }, [
+                _c("div", { staticClass: "mb-3 col-md-3" }, [
                   _vm._m(5),
                   _vm._v(" "),
                   _c("input", {
@@ -41575,44 +41557,46 @@ var render = function () {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.$v.is_active.$model,
-                        expression: "$v.is_active.$model",
+                        value: _vm.is_active,
+                        expression: "is_active",
                       },
                     ],
-                    staticClass: "form-control form-control-sm",
-                    class: {
-                      "is-invalid": _vm.validationStatus(_vm.$v.is_active),
-                    },
+                    staticClass: "ms-3",
                     attrs: {
-                      type: "text",
-                      name: "is_active",
-                      placeholder: "Enter Is Active",
+                      type: "checkbox",
+                      value: "is_active",
+                      id: "is_active",
                     },
-                    domProps: { value: _vm.$v.is_active.$model },
+                    domProps: {
+                      checked: Array.isArray(_vm.is_active)
+                        ? _vm._i(_vm.is_active, "is_active") > -1
+                        : _vm.is_active,
+                    },
                     on: {
-                      input: function ($event) {
-                        if ($event.target.composing) {
-                          return
+                      change: function ($event) {
+                        var $$a = _vm.is_active,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = "is_active",
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 && (_vm.is_active = $$a.concat([$$v]))
+                          } else {
+                            $$i > -1 &&
+                              (_vm.is_active = $$a
+                                .slice(0, $$i)
+                                .concat($$a.slice($$i + 1)))
+                          }
+                        } else {
+                          _vm.is_active = $$c
                         }
-                        _vm.$set(
-                          _vm.$v.is_active,
-                          "$model",
-                          $event.target.value
-                        )
                       },
                     },
                   }),
-                  _vm._v(" "),
-                  !_vm.$v.is_active.required
-                    ? _c("div", { staticClass: "invalid-feedback" }, [
-                        _vm._v(
-                          "\n                The Is Active is required.\n              "
-                        ),
-                      ])
-                    : _vm._e(),
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "mb-3 col-md-12" }, [
+                _c("div", { staticClass: "mb-3 col-md-4" }, [
                   _vm._m(6),
                   _vm._v(" "),
                   _c("input", {
@@ -41620,93 +41604,46 @@ var render = function () {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.$v.is_superuser.$model,
-                        expression: "$v.is_superuser.$model",
+                        value: _vm.is_superuser,
+                        expression: "is_superuser",
                       },
                     ],
-                    staticClass: "form-control form-control-sm",
-                    class: {
-                      "is-invalid": _vm.validationStatus(_vm.$v.is_superuser),
-                    },
+                    staticClass: "ms-3",
                     attrs: {
-                      type: "text",
-                      name: "is_superuser",
-                      placeholder: "Enter Is Superuser",
+                      type: "checkbox",
+                      value: "is_superuser",
+                      id: "is_superuser",
                     },
-                    domProps: { value: _vm.$v.is_superuser.$model },
+                    domProps: {
+                      checked: Array.isArray(_vm.is_superuser)
+                        ? _vm._i(_vm.is_superuser, "is_superuser") > -1
+                        : _vm.is_superuser,
+                    },
                     on: {
-                      input: function ($event) {
-                        if ($event.target.composing) {
-                          return
+                      change: function ($event) {
+                        var $$a = _vm.is_superuser,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = "is_superuser",
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 && (_vm.is_superuser = $$a.concat([$$v]))
+                          } else {
+                            $$i > -1 &&
+                              (_vm.is_superuser = $$a
+                                .slice(0, $$i)
+                                .concat($$a.slice($$i + 1)))
+                          }
+                        } else {
+                          _vm.is_superuser = $$c
                         }
-                        _vm.$set(
-                          _vm.$v.is_superuser,
-                          "$model",
-                          $event.target.value
-                        )
                       },
                     },
                   }),
-                  _vm._v(" "),
-                  !_vm.$v.password.required
-                    ? _c("div", { staticClass: "invalid-feedback" }, [
-                        _vm._v(
-                          "\n                The Is Superuser is required.\n              "
-                        ),
-                      ])
-                    : _vm._e(),
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "mb-3 col-md-12" }, [
-                  _vm._m(7),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model.trim",
-                        value: _vm.$v.last_login.$model,
-                        expression: "$v.last_login.$model",
-                        modifiers: { trim: true },
-                      },
-                    ],
-                    staticClass: "form-control form-control-sm",
-                    class: {
-                      "is-invalid": _vm.validationStatus(_vm.$v.last_login),
-                    },
-                    attrs: {
-                      type: "text",
-                      name: "last_login",
-                      placeholder: "Enter Last Login (date format)",
-                    },
-                    domProps: { value: _vm.$v.last_login.$model },
-                    on: {
-                      input: function ($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.$v.last_login,
-                          "$model",
-                          $event.target.value.trim()
-                        )
-                      },
-                      blur: function ($event) {
-                        return _vm.$forceUpdate()
-                      },
-                    },
-                  }),
-                  _vm._v(" "),
-                  !_vm.$v.last_login.required
-                    ? _c("div", { staticClass: "invalid-feedback" }, [
-                        _vm._v(
-                          "\n                The Last Login is required.\n              "
-                        ),
-                      ])
-                    : _vm._e(),
-                ]),
-                _vm._v(" "),
-                _vm._m(8),
+                _vm._m(7),
               ]),
             ]
           ),
@@ -41773,8 +41710,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [
-      _vm._v(" Is Staff "),
+    return _c("label", { attrs: { for: "is_staff" } }, [
+      _vm._v("Is Staff"),
       _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
     ])
   },
@@ -41782,8 +41719,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [
-      _vm._v("Is Active "),
+    return _c("label", { attrs: { for: "is_active" } }, [
+      _vm._v("Is Active"),
       _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
     ])
   },
@@ -41791,8 +41728,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [
-      _vm._v("Is Superuser "),
+    return _c("label", { attrs: { for: "is_superuser" } }, [
+      _vm._v("Is Superuser"),
       _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
     ])
   },
@@ -41800,16 +41737,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [
-      _vm._v(" Last Login "),
-      _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-12" }, [
+    return _c("div", { staticClass: "col-md-12 mt-4" }, [
       _c("button", { staticClass: "btn btn-primary btn-sm float-end" }, [
         _vm._v("\n                Signup Now\n              "),
       ]),

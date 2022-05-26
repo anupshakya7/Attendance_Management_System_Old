@@ -126,7 +126,7 @@
                 </div>
                 <div class="col-sm-3">
                   <label>Department Name: </label>
-                  <select
+                  <!-- <select
                     v-model="searchEmployee.departmentName"
                     class="form-select form-select-sm"
                     aria-label="Default select example"
@@ -138,11 +138,18 @@
                     >
                       {{ employeeNamess.departmentName }}
                     </option>
-                  </select>
+                  </select> -->
+                  <input
+                    type="text"
+                    name="departmentName"
+                    v-model="searchEmployee.DeptName"
+                    class="form-control form-control-sm"
+                    placeholder="Enter Department Name"
+                  />
                 </div>
                 <div class="col-sm-3">
                   <label> Search Employees </label>
-                  <select
+                  <!-- <select
                     v-model="searchEmployee.employee"
                     class="form-select form-select-sm"
                     aria-label="Default select example"
@@ -154,7 +161,14 @@
                     >
                       {{ employeeNames.employeeName }}
                     </option>
-                  </select>
+                  </select> -->
+                  <input
+                    type="text"
+                    name="employeeName"
+                    v-model="searchEmployee.employee"
+                    class="form-control form-control-sm"
+                    placeholder="Enter Employee Name"
+                  />
                 </div>
                 <div class="col-sm-3">
                   <label for=""></label>
@@ -469,16 +483,16 @@
                       v-for="employees in employeeData"
                       v-bind:key="employees.id"
                     >
-                      <td>{{ employees.employeeName }}</td>
-                      <td>{{ employees.departmentName }}</td>
-                      <td>{{ employees.sex }}</td>
-                      <td>{{ employees.birthday }}</td>
-                      <td>{{ employees.nationality }}</td>
+                      <td>{{ employees.name }}</td>
+                      <td>{{ employees.DeptName }}</td>
+                      <td>{{ employees.Gender }}</td>
+                      <td>{{ employees.Birthday }}</td>
+                      <td>{{ employees.minzu }}</td>
                       <td>{{ employees.title }}</td>
-                      <td>{{ employees.officePhone }}</td>
-                      <td>{{ employees.mobile }}</td>
-                      <td>{{ employees.idCard }}</td>
-                      <td>{{ employees.registerDevice }}</td>
+                      <td>{{ employees.FPHONE }}</td>
+                      <td>{{ employees.pager }}</td>
+                      <td>{{ employees.Card }}</td>
+                      <td>{{ employees.SN }}</td>
                       <td>{{ employees.FP }}</td>
                       <td>{{ employees.Transactions }}</td>
                       <td>{{ employees.Picture }}</td>
@@ -745,16 +759,16 @@ export default {
   data() {
     return {
       employee: {
-        employeeName: "",
-        departmentName: "",
-        sex: "",
-        birthday: "",
-        nationality: "",
+        name: "",
+        DeptName: "",
+        Gender: "",
+        Birthday: "",
+        minzu: "",
         title: "",
-        officePhone: "",
-        mobile: "",
-        idCard: "",
-        registerDevice: "",
+        FPHONE: "",
+        pager: "",
+        Card: "",
+        SN: "",
         FP: "",
         Transactions: "",
         Picture: "",
@@ -776,7 +790,7 @@ export default {
       },
       searchEmployee: {
         birthday: "",
-        departmentName: "",
+        DeptName: "",
         employee: "",
       },
       employeeData: [],
@@ -848,13 +862,12 @@ export default {
     },
 
     async reload() {
-      let result = await axios.get("http://localhost:3000/employee");
+      let result = await axios.get("http://127.0.0.1:8000/api/getemployee");
       this.employeeData = result.data;
-      console.log(result.data);
     },
     async search() {
-      let searchResult = await axios.get(
-        `http://localhost:3000/employee?birthday=${this.searchEmployee.birthday}&departmentName=${this.searchEmployee.departmentName}&employeeName=${this.searchEmployee.employee}`
+      let searchResult = await axios.post(
+        `http://127.0.0.1:8000/api/filteremployeedata?birthday=${this.searchEmployee.birthday}&DeptName=${this.searchEmployee.DeptName}&employee=${this.searchEmployee.employee}`
       );
       this.employeeData = searchResult.data;
       console.log(employeeData);
