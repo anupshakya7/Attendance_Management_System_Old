@@ -10,4 +10,6 @@ class Employee extends Model
     use HasFactory;
     protected $table = 'userinfo';
     protected $guarded = [];
+    public $timestamps = false;
+
 }
