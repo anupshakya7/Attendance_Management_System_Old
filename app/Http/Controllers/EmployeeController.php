@@ -40,6 +40,7 @@ class EmployeeController extends Controller
         public function create(Request $request){
             $newemployee = Employee::create([
                 'name' => $request->empname,
+                'badgenumber' => $request->badgenum,
                 'defaultdeptid' => $request->departmentname,
                 'Gender' => $request->gender,
                 'Birthday' => $request->birthday,
@@ -55,6 +56,7 @@ class EmployeeController extends Controller
             $newemployee = Employee::where('userid',$id)->update([
                 'name' => $request->empname,
                 'defaultdeptid' => $request->departmentname,
+                'badgenumber' => $request->badgenum,
                 'Gender' => $request->gender,
                 'Birthday' => $request->birthday,
                 'minzu' => $request->nationality,
