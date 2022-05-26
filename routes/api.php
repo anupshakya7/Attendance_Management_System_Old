@@ -26,4 +26,8 @@ Route::post('register', [App\Http\Controllers\Registercontroller::class, 'create
 Route::post('login', [App\Http\Controllers\LoginController::class, 'userlogin']);
 Route::get('getemployee', [App\Http\Controllers\EmployeeController::class, 'getemployee']);
 Route::post('filteremployeedata',  [App\Http\Controllers\EmployeeController::class, 'filteroption']);
+Route::post('create/employee',  [App\Http\Controllers\EmployeeController::class, 'create']);
+Route::post('update/employee/{id}',  [App\Http\Controllers\EmployeeController::class, 'update']);
+
+
 

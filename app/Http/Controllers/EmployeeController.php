@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -35,5 +36,33 @@ class EmployeeController extends Controller
             $filter = DB::table('iclock')->join('departments','iclock.DeptID','=','departments.DeptId')->rightJoin('userinfo','departments.DeptId','=', 'userinfo.defaultdeptid')->where('userinfo.name',$request->employee)->select('iclock.SN','departments.DeptName','userinfo.name','userinfo.Card','userinfo.Gender','userinfo.Birthday','userinfo.FPHONE','userinfo.pager','userinfo.minzu','userinfo.title')->get();
          }
          return response($filter, 200);   
+        }
+        public function create(Request $request){
+            $newemployee = Employee::create([
+                'name' => $request->empname,
+                'defaultdeptid' => $request->departmentname,
+                'Gender' => $request->gender,
+                'Birthday' => $request->nirthday,
+                'minzu' => $request->nationality,
+                'title' => $request->title,
+                'FPHONE' => $request->officephone,
+                'pager' => $request->mobile,
+                'Card' => $request->card
+            ]);
+            return response($newemployee, 200);
+        }
+        public function update(Request $request, $id){
+            $newemployee = Employee::where('userid',$id)->update([
+                'name' => $request->empname,
+                'defaultdeptid' => $request->departmentname,
+                'Gender' => $request->gender,
+                'Birthday' => $request->nirthday,
+                'minzu' => $request->nationality,
+                'title' => $request->title,
+                'FPHONE' => $request->officephone,
+                'pager' => $request->mobile,
+                'Card' => $request->card
+            ]);
+            return response($newemployee, 200);
         }
 }
