@@ -48,7 +48,8 @@ class EmployeeController extends Controller
                 'title' => $request->title,
                 'FPHONE' => $request->officephone,
                 'pager' => $request->mobile,
-                'Card' => $request->card
+                'Card' => $request->card,
+                'DelTag' => 0
             ]);
             return response($newemployee, 200);
         }
