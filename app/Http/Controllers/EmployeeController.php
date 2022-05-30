@@ -17,7 +17,6 @@ class EmployeeController extends Controller
     {
         if (isset($request->birthday) && isset($request->departmentname) && isset($request->employee)) {
             $filter = DB::table('iclock')->join('departments', 'iclock.DeptID', '=', 'departments.DeptId')->rightJoin('userinfo', 'departments.DeptId', '=', 'userinfo.defaultdeptid')->where('userinfo.Birthday', $request->birthday)->where('departments.DeptName', $request->departmentname)->where('userinfo.name', $request->employee)->select('iclock.SN', 'departments.DeptName', 'userinfo.name', 'userinfo.Card', 'userinfo.Gender', 'userinfo.Birthday', 'userinfo.FPHONE', 'userinfo.pager', 'userinfo.minzu', 'userinfo.title')->get();
-
         } elseif (isset($request->birthday) && isset($request->departmentname)) {
             $filter = DB::table('iclock')->join('departments', 'iclock.DeptID', '=', 'departments.DeptId')->rightJoin('userinfo', 'departments.DeptId', '=', 'userinfo.defaultdeptid')->where('userinfo.Birthday', $request->birthday)->where('departments.DeptName', $request->departmentname)->select('iclock.SN', 'departments.DeptName', 'userinfo.name', 'userinfo.Card', 'userinfo.Gender', 'userinfo.Birthday', 'userinfo.FPHONE', 'userinfo.pager', 'userinfo.minzu', 'userinfo.title')->get();
         } elseif (isset($request->birthday) && isset($request->employee)) {
@@ -37,6 +36,7 @@ class EmployeeController extends Controller
     {
         $newemployee = Employee::create([
             'name' => $request->empname,
+            'badgenumber' => $request->badgenum,
             'defaultdeptid' => $request->departmentname,
             'Gender' => $request->gender,
             'Birthday' => $request->birthday,
@@ -45,6 +45,7 @@ class EmployeeController extends Controller
             'FPHONE' => $request->officephone,
             'pager' => $request->mobile,
             'Card' => $request->card,
+            'DelTag' => 1,
         ]);
         return response($newemployee, 200);
     }
@@ -53,6 +54,7 @@ class EmployeeController extends Controller
         $newemployee = Employee::where('userid', $id)->update([
             'name' => $request->empname,
             'defaultdeptid' => $request->departmentname,
+            'badgenumber' => $request->badgenum,
             'Gender' => $request->gender,
             'Birthday' => $request->birthday,
             'minzu' => $request->nationality,

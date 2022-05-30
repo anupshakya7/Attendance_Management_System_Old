@@ -999,17 +999,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context5.prev = _context5.next) {
               case 0:
                 _context5.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_2___default().post("http://localhost:3000/employee", {
-                  employeeName: _this5.employee.employeeName,
-                  departmentName: _this5.employee.departmentName,
-                  sex: _this5.employee.sex,
-                  birthday: _this5.employee.birthday,
-                  nationality: _this5.employee.nationality,
+                return axios__WEBPACK_IMPORTED_MODULE_2___default().post("http://127.0.0.1:8000/api/create/employee", {
+                  empname: _this5.employee.name,
+                  departmentname: _this5.employee.DeptName,
+                  gender: _this5.employee.Gender,
+                  birthday: _this5.employee.Birthday,
+                  nationality: _this5.employee.minzu,
                   title: _this5.employee.title,
-                  officePhone: _this5.employee.officePhone,
-                  mobile: _this5.employee.mobile,
-                  idCard: _this5.employee.idCard,
-                  registerDevice: _this5.employee.registerDevice,
+                  officePhone: _this5.employee.FPHONE,
+                  mobile: _this5.employee.pager,
+                  card: _this5.employee.Card,
+                  registerDevice: _this5.employee.SN,
                   FP: _this5.employee.FP,
                   Transactions: _this5.employee.Transactions,
                   Picture: _this5.employee.Picture
@@ -1033,7 +1033,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     addBtnClear: function addBtnClear() {
-      this.employee.employeeName = "", this.employee.departmentName = "", this.employee.sex = "", this.employee.birthday = "", this.employee.nationality = "", this.employee.title = "", this.employee.officePhone = "", this.employee.mobile = "", this.employee.idCard = "", this.employee.registerDevice = "", this.employee.FP = "", this.employee.Transactions = "", this.employee.Picture = "";
+      this.employee.name = "", this.employee.DeptName = "", this.employee.Gender = "", this.employee.Birthday = "", this.employee.minzu = "", this.employee.title = "", this.employee.FPHONE = "", this.employee.pager = "", this.employee.Card = "", this.employee.SN = "", this.employee.FP = "", this.employee.Transactions = "", this.employee.Picture = "";
     }
   },
   mounted: function mounted() {

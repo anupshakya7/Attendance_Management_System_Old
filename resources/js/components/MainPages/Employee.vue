@@ -873,37 +873,40 @@ export default {
       console.log(employeeData);
     },
     async AddEmployeeDetails() {
-      let addEmpResult = await axios.post("http://localhost:3000/employee", {
-        employeeName: this.employee.employeeName,
-        departmentName: this.employee.departmentName,
-        sex: this.employee.sex,
-        birthday: this.employee.birthday,
-        nationality: this.employee.nationality,
-        title: this.employee.title,
-        officePhone: this.employee.officePhone,
-        mobile: this.employee.mobile,
-        idCard: this.employee.idCard,
-        registerDevice: this.employee.registerDevice,
-        FP: this.employee.FP,
-        Transactions: this.employee.Transactions,
-        Picture: this.employee.Picture,
-      });
+      let addEmpResult = await axios.post(
+        "http://127.0.0.1:8000/api/create/employee",
+        {
+          empname: this.employee.name,
+          departmentname: this.employee.DeptName,
+          gender: this.employee.Gender,
+          birthday: this.employee.Birthday,
+          nationality: this.employee.minzu,
+          title: this.employee.title,
+          officePhone: this.employee.FPHONE,
+          mobile: this.employee.pager,
+          card: this.employee.Card,
+          registerDevice: this.employee.SN,
+          FP: this.employee.FP,
+          Transactions: this.employee.Transactions,
+          Picture: this.employee.Picture,
+        }
+      );
       if (addEmpResult.status == 201) {
         this.reload();
         this.addBtnClear();
       }
     },
     addBtnClear() {
-      (this.employee.employeeName = ""),
-        (this.employee.departmentName = ""),
-        (this.employee.sex = ""),
-        (this.employee.birthday = ""),
-        (this.employee.nationality = ""),
+      (this.employee.name = ""),
+        (this.employee.DeptName = ""),
+        (this.employee.Gender = ""),
+        (this.employee.Birthday = ""),
+        (this.employee.minzu = ""),
         (this.employee.title = ""),
-        (this.employee.officePhone = ""),
-        (this.employee.mobile = ""),
-        (this.employee.idCard = ""),
-        (this.employee.registerDevice = ""),
+        (this.employee.FPHONE = ""),
+        (this.employee.pager = ""),
+        (this.employee.Card = ""),
+        (this.employee.SN = ""),
         (this.employee.FP = ""),
         (this.employee.Transactions = ""),
         (this.employee.Picture = "");
