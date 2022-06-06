@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -10,27 +11,21 @@ class EmployeeController extends Controller
 {
     public function getemployee()
     {
-        $employee = DB::table('iclock')->join('departments', 'iclock.DeptID', '=', 'departments.DeptId')->rightJoin('userinfo', 'departments.DeptId', '=', 'userinfo.defaultdeptid')->select('iclock.SN', 'departments.DeptName', 'userinfo.name', 'userinfo.Card', 'userinfo.Gender', 'userinfo.Birthday', 'userinfo.FPHONE', 'userinfo.pager', 'userinfo.minzu', 'userinfo.title')->get();
+        $employee = DB::table('departments')->join('userinfo', 'userinfo.defaultdeptid', '=', 'departments.DeptId')->rightjoin('template', 'userinfo.userid', '=', 'template.userid')->select(DB::raw('DATE(userinfo.Birthday), DeptName, userinfo.userid, userinfo.name, userinfo.Card, userinfo.Gender, template.SN, userinfo.FPHONE, userinfo.pager, userinfo.minzu, userinfo.title '))->distinct('template.userid')->get();
+
         return response($employee, 200);
     }
     public function filteroption(Request $request)
     {
-        if (isset($request->birthday) && isset($request->departmentname) && isset($request->employee)) {
-            $filter = DB::table('iclock')->join('departments', 'iclock.DeptID', '=', 'departments.DeptId')->rightJoin('userinfo', 'departments.DeptId', '=', 'userinfo.defaultdeptid')->where('userinfo.Birthday', $request->birthday)->where('departments.DeptName', $request->departmentname)->where('userinfo.name', $request->employee)->select('iclock.SN', 'departments.DeptName', 'userinfo.name', 'userinfo.Card', 'userinfo.Gender', 'userinfo.Birthday', 'userinfo.FPHONE', 'userinfo.pager', 'userinfo.minzu', 'userinfo.title')->get();
-        } elseif (isset($request->birthday) && isset($request->departmentname)) {
-            $filter = DB::table('iclock')->join('departments', 'iclock.DeptID', '=', 'departments.DeptId')->rightJoin('userinfo', 'departments.DeptId', '=', 'userinfo.defaultdeptid')->where('userinfo.Birthday', $request->birthday)->where('departments.DeptName', $request->departmentname)->select('iclock.SN', 'departments.DeptName', 'userinfo.name', 'userinfo.Card', 'userinfo.Gender', 'userinfo.Birthday', 'userinfo.FPHONE', 'userinfo.pager', 'userinfo.minzu', 'userinfo.title')->get();
-        } elseif (isset($request->birthday) && isset($request->employee)) {
-            $filter = DB::table('iclock')->join('departments', 'iclock.DeptID', '=', 'departments.DeptId')->rightJoin('userinfo', 'departments.DeptId', '=', 'userinfo.defaultdeptid')->whereDate('userinfo.Birthday', $request->birthday)->where('userinfo.name', $request->employee)->select('iclock.SN', 'departments.DeptName', 'userinfo.name', 'userinfo.Card', 'userinfo.Gender', 'userinfo.Birthday', 'userinfo.FPHONE', 'userinfo.pager', 'userinfo.minzu', 'userinfo.title')->get();
-        } elseif (isset($request->departmentname) && isset($request->employee)) {
-            $filter = DB::table('iclock')->join('departments', 'iclock.DeptID', '=', 'departments.DeptId')->rightJoin('userinfo', 'departments.DeptId', '=', 'userinfo.defaultdeptid')->where('departments.DeptName', $request->departmentname)->where('userinfo.name', $request->employee)->select('iclock.SN', 'departments.DeptName', 'userinfo.name', 'userinfo.Card', 'userinfo.Gender', 'userinfo.Birthday', 'userinfo.FPHONE', 'userinfo.pager', 'userinfo.minzu', 'userinfo.title')->get();
-        } elseif (isset($request->birthday)) {
-            $filter = DB::table('iclock')->join('departments', 'iclock.DeptID', '=', 'departments.DeptId')->rightJoin('userinfo', 'departments.DeptId', '=', 'userinfo.defaultdeptid')->wheredate('userinfo.Birthday', $request->birthday)->select('iclock.SN', 'departments.DeptName', 'userinfo.name', 'userinfo.Card', 'userinfo.Gender', 'userinfo.Birthday', 'userinfo.FPHONE', 'userinfo.pager', 'userinfo.minzu', 'userinfo.title')->get();
+        if (isset($request->departmentname) && isset($request->employee)) {
+            // $data= DB::table('departments')->join('userinfo', 'userinfo.defaultdeptid', '=', 'departments.DeptId')->rightjoin('template', 'userinfo.userid', '=', 'template.userid')->where('departments.DeptName', 'LIKE', "%{$request->departmentname}%")->where('userinfo.name', 'LIKE', "%{$request->employee}%")->select('DeptName', 'userinfo.userid', 'userinfo.name', 'userinfo.Card', 'userinfo.Gender', 'template.SN', 'userinfo.Birthday', 'userinfo.FPHONE', 'userinfo.pager', 'userinfo.minzu', 'userinfo.title')->distinct('template.userid')->get();
+            $filter = DB::table('departments')->join('userinfo', 'userinfo.defaultdeptid', '=', 'departments.DeptId')->rightjoin('template', 'userinfo.userid', '=', 'template.userid')->where('departments.DeptName', 'LIKE', "%{$request->departmentname}%")->where('userinfo.name', 'LIKE', "%{$request->employee}%")->select('DeptName', 'userinfo.userid', 'userinfo.name', 'userinfo.Card', 'userinfo.Gender', 'template.SN', 'userinfo.Birthday', 'userinfo.FPHONE', 'userinfo.pager', 'userinfo.minzu', 'userinfo.title')->distinct('template.userid')->get();
         } elseif (isset($request->departmentname)) {
             // dd($request->departmentname);
-            $filter = DB::table('iclock')->join('departments', 'iclock.DeptID', '=', 'departments.DeptId')->rightJoin('userinfo', 'departments.DeptId', '=', 'userinfo.defaultdeptid')->where('departments.DeptName', $request->departmentname)->select('iclock.SN', 'departments.DeptName', 'userinfo.name', 'userinfo.Card', 'userinfo.Gender', 'userinfo.Birthday', 'userinfo.FPHONE', 'userinfo.pager', 'userinfo.minzu', 'userinfo.title')->get();
+            $filter = DB::table('departments')->join('userinfo', 'userinfo.defaultdeptid', '=', 'departments.DeptId')->rightjoin('template', 'userinfo.userid', '=', 'template.userid')->where('departments.DeptName', 'LIKE', "%{$request->departmentname}%")->select('DeptName', 'userinfo.userid', 'userinfo.name', 'userinfo.Card', 'userinfo.Gender', 'template.SN', 'userinfo.Birthday', 'userinfo.FPHONE', 'userinfo.pager', 'userinfo.minzu', 'userinfo.title')->distinct('template.userid')->get();
         } else {
             // dd($request->employee);
-            $filter = DB::table('iclock')->join('departments', 'iclock.DeptID', '=', 'departments.DeptId')->rightJoin('userinfo', 'departments.DeptId', '=', 'userinfo.defaultdeptid')->where('userinfo.name', $request->employee)->select('iclock.SN', 'departments.DeptName', 'userinfo.name', 'userinfo.Card', 'userinfo.Gender', 'userinfo.Birthday', 'userinfo.FPHONE', 'userinfo.pager', 'userinfo.minzu', 'userinfo.title')->get();
+            $filter = DB::table('departments')->join('userinfo', 'userinfo.defaultdeptid', '=', 'departments.DeptId')->rightjoin('template', 'userinfo.userid', '=', 'template.userid')->where('userinfo.name', 'LIKE', "%{$request->employee}%")->select('DeptName', 'userinfo.userid', 'userinfo.name', 'userinfo.Card', 'userinfo.Gender', 'template.SN', 'userinfo.Birthday', 'userinfo.FPHONE', 'userinfo.pager', 'userinfo.minzu', 'userinfo.title')->distinct('template.userid')->get();
         }
         return response($filter, 200);
     }
@@ -53,6 +48,7 @@ class EmployeeController extends Controller
     }
     public function update(Request $request, $id)
     {
+        // dd($request->officephone, $request->mobile);
         $newemployee = Employee::where('userid', $id)->update([
             'name' => $request->empname,
             'defaultdeptid' => $request->departmentname,
@@ -66,5 +62,22 @@ class EmployeeController extends Controller
             'Card' => $request->card,
         ]);
         return response($newemployee, 200);
+    }
+
+    public function getemployeedata($id)
+    {
+        $individual_employee = Employee::where('userid', $id)->first();
+
+        if (empty($individual_employee)) {
+            return response(['message' => ['Username is invalid']], 500);
+        }
+
+        return response($individual_employee, 200);
+    }
+    public function getdepartment()
+    {
+        // dd('hello');
+        $deparment = Department::select('DeptID', 'DeptName')->get();
+        return response($deparment, 200);
     }
 }

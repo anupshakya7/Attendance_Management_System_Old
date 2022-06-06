@@ -19,13 +19,15 @@ class Registercontroller extends Controller
         $password = 'sha1$' . $salt . '$' . $sha1;
         return User::create([
             'username' => $req->username,
-            'name' => $req->name,
+            'first_name' => $req->first_name,
+            'last_name' => $req->last_name,
             'email' => $req->email,
             'password' => $password,
-            'is_staff' => 1,
-            'is_active' => 1,
-            'is_superuser' => 0,
+            'is_staff' => $req->is_staff,
+            'is_active' => $req->is_active,
+            'is_superuser' => $req->is_superuser,
             'last_login' => Carbon::now(),
+            'date_joined' => Carbon::now(),
         ]);
         // }
         // else{

@@ -19,7 +19,10 @@
                   class="form-control form-control-sm"
                   placeholder="Enter Username"
                 />
-                <div v-if="!$v.username.required" class="invalid-feedback">
+                <div
+                  v-if="!$v.username.required"
+                  class="invalid-feedback mt-n3"
+                >
                   The username field is required.
                 </div>
               </div>
@@ -33,14 +36,23 @@
                   class="form-control form-control-sm"
                   placeholder="Enter Password"
                 />
-                <div v-if="!$v.password.required" class="invalid-feedback">
+                <div
+                  v-if="!$v.password.required"
+                  class="invalid-feedback mt-n3"
+                >
                   The password field is required
                 </div>
-                <div v-if="!$v.password.minLength" class="invalid-feedback">
+                <div
+                  v-if="!$v.password.minLength"
+                  class="invalid-feedback mt-n3"
+                >
                   You must have at least
                   {{ $v.password.$params.minLength.min }} letters.
                 </div>
-                <div v-if="!$v.password.maxLength" class="invalid-feedback">
+                <div
+                  v-if="!$v.password.maxLength"
+                  class="invalid-feedback mt-n3"
+                >
                   You must not have greater then
                   {{ $v.password.$params.maxLength.max }} letters.
                 </div>

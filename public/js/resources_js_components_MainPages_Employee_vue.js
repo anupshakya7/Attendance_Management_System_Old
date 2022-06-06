@@ -14,15 +14,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _SearchBar_SearchBar_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../SearchBar/SearchBar.vue */ "./resources/js/components/SearchBar/SearchBar.vue");
-/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_3__);
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -772,6 +776,333 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -781,95 +1112,152 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     SearchBar: _SearchBar_SearchBar_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
-    return {
+    var _ref;
+
+    return _ref = {
+      date: "2020/10/22",
+      perPage: 15,
+      currentPage: 1,
+      fields: [{
+        key: "name",
+        label: "Employee Name"
+      }, {
+        key: "DeptName",
+        label: "Department Name"
+      }, {
+        key: "Gender",
+        label: "Gender"
+      }, {
+        key: "minzu",
+        label: "Nationality"
+      }, {
+        key: "FPHONE",
+        label: "Office Number"
+      }, {
+        key: "pager",
+        label: "Mobile"
+      }, {
+        key: "DATE(userinfo.Birthday)",
+        label: "Birthday"
+      }, {
+        key: "title",
+        label: "Title"
+      }, {
+        key: "Card",
+        label: "Id Card"
+      }, {
+        key: "SN",
+        label: "Registeration Number"
+      }, {
+        key: "actions",
+        label: "Actions"
+      }],
+      // employee: {
+      //   name: "",
+      //   DeptName: "",
+      //   Gender: "",
+      //   Birthday: "",
+      //   minzu: "",
+      //   title: "",
+      //   FPHONE: "",
+      //   pager: "",
+      //   Card: "",
+      //   badgenumber: "",
+      //   // SN: "",
+      //   // FP: "",
+      //   // Transactions: "",
+      //   // Picture: "",
+      // },
       employee: {
+        empname: "",
+        departmentname: "",
+        gender: "",
+        birthday: "",
+        nationality: "",
+        title: "",
+        officephone: "",
+        mobile: "",
+        card: "",
+        badgenum: "" // SN: "",
+        // FP: "",
+        // Transactions: "",
+        // Picture: "",
+
+      },
+      updateEmployee: {
         name: "",
-        DeptName: "",
+        badgenumber: "",
+        defaultdeptid: "",
         Gender: "",
         Birthday: "",
         minzu: "",
         title: "",
-        FPHONE: "",
+        officephone: "",
         pager: "",
-        Card: "",
-        SN: "",
-        FP: "",
-        Transactions: "",
-        Picture: ""
-      },
-      updateEmployee: {
-        employeeName: "",
-        departmentName: "",
-        sex: "",
-        birthday: "",
-        nationality: "",
-        title: "",
-        officePhone: "",
-        mobile: "",
-        idCard: "",
-        registerDevice: "",
-        FP: "",
-        Transactions: "",
-        Picture: ""
+        Card: ""
       },
       searchEmployee: {
         birthday: "",
         DeptName: "",
         employee: ""
       },
-      employeeData: [],
-      searchBar: [],
-      chartData: [["Department", "Project", "Employee"], ["Software Developer", 10, 50], ["Hardware Developer", 11, 60], ["Marketing", 66, 100], ["Human Resource", 10, 20]],
-      chartOptions: {
-        chart: {
-          title: "Company Performance",
-          subtitle: "Project, Employee: 2014-2017"
-        }
+      employeeData: []
+    }, _defineProperty(_ref, "updateEmployee", []), _defineProperty(_ref, "departmentDropDown", []), _defineProperty(_ref, "searchBar", []), _defineProperty(_ref, "chartData", [["Department", "Project", "Employee"], ["Software Developer", 10, 50], ["Hardware Developer", 11, 60], ["Marketing", 66, 100], ["Human Resource", 10, 20]]), _defineProperty(_ref, "chartOptions", {
+      chart: {
+        title: "Company Performance",
+        subtitle: "Project, Employee: 2014-2017"
       }
-    };
+    }), _ref;
   },
   validations: {
     employee: {
-      employeeName: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      empname: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
       },
-      departmentName: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      departmentname: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
       },
-      sex: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      gender: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
       },
       birthday: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
       },
       nationality: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
       },
       title: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
       },
-      officePhone: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      officephone: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
       },
       mobile: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
       },
-      idCard: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      card: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
       },
-      registerDevice: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
-      },
-      FP: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
-      },
-      Transactions: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
-      },
-      Picture: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
-      }
-    }
+      badgenum: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      } // SN: { required },
+      // FP: { required },
+      // Transactions: { required },
+      // Picture: { required },
+
+    } // updateEmployee: {
+    //   empname: { required },
+    //   departmentname: { required },
+    //   gender: { required },
+    //   birthday: { required },
+    //   nationality: { required },
+    //   title: { required },
+    //   officephone: { required },
+    //   mobile: { required },
+    //   card: { required },
+    //   badgenum: { required },
+    // },
+
   },
   methods: {
     validationStatus: function validationStatus(validation) {
@@ -885,13 +1273,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_2___default().get("http://localhost:3000/employee/" + id);
+                return axios__WEBPACK_IMPORTED_MODULE_2___default().get("http://127.0.0.1:8000/api/getemployeedata/" + id);
 
               case 2:
                 updateData = _context.sent;
                 _this.updateEmployee = updateData.data;
+                console.log(_this.updateEmployee);
 
-              case 4:
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -899,40 +1288,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    UpdateEmployeeData: function UpdateEmployeeData(id) {
+    DepartmentDataDropDown: function DepartmentDataDropDown() {
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-        var updateDataResult;
+        var DepartmentDropDownResult;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_2___default().put("http://localhost:3000/employee/" + id, {
-                  employeeName: _this2.updateEmployee.employeeName,
-                  departmentName: _this2.updateEmployee.departmentName,
-                  sex: _this2.updateEmployee.sex,
-                  birthday: _this2.updateEmployee.birthday,
-                  nationality: _this2.updateEmployee.nationality,
-                  title: _this2.updateEmployee.title,
-                  officePhone: _this2.updateEmployee.officePhone,
-                  mobile: _this2.updateEmployee.mobile,
-                  idCard: _this2.updateEmployee.idCard,
-                  registerDevice: _this2.updateEmployee.registerDevice,
-                  FP: _this2.updateEmployee.FP,
-                  Transactions: _this2.updateEmployee.Transactions,
-                  Picture: _this2.updateEmployee.Picture
-                });
+                return axios__WEBPACK_IMPORTED_MODULE_2___default().get("http://127.0.0.1:8000/api/getdepartmentlist");
 
               case 2:
-                updateDataResult = _context2.sent;
+                DepartmentDropDownResult = _context2.sent;
+                _this2.departmentDropDown = DepartmentDropDownResult.data;
+                console.log(_this2.departmentDropDown);
 
-                if (updateDataResult.status == 200) {
-                  _this2.reload();
-                }
-
-              case 4:
+              case 5:
               case "end":
                 return _context2.stop();
             }
@@ -940,21 +1313,41 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2);
       }))();
     },
-    reload: function reload() {
+    UpdateEmployeeData: function UpdateEmployeeData(id) {
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
-        var result;
+        var updateDataResult;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_2___default().get("http://127.0.0.1:8000/api/getemployee");
+                return axios__WEBPACK_IMPORTED_MODULE_2___default().post("http://127.0.0.1:8000/api/update/employee/" + id, {
+                  empname: _this3.updateEmployee.name,
+                  departmentname: _this3.updateEmployee.defaultdeptid,
+                  gender: _this3.updateEmployee.Gender,
+                  birthday: _this3.updateEmployee.DATE(userinfo.Birthday),
+                  nationality: _this3.updateEmployee.minzu,
+                  title: _this3.updateEmployee.title,
+                  officephone: _this3.updateEmployee.FPHONE,
+                  mobile: _this3.updateEmployee.pager,
+                  card: _this3.updateEmployee.Card,
+                  badgenum: _this3.updateEmployee.badgenumber // registerDevice: this.updateEmployee.registerDevice,
+                  // FP: this.updateEmployee.FP,
+                  // Transactions: this.updateEmployee.Transactions,
+                  // Picture: this.updateEmployee.Picture,
+
+                });
 
               case 2:
-                result = _context3.sent;
-                _this3.employeeData = result.data;
+                updateDataResult = _context3.sent;
+
+                if (updateDataResult.status == 200) {
+                  alert("Employee Successfully Updated");
+
+                  _this3.reload();
+                }
 
               case 4:
               case "end":
@@ -964,22 +1357,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee3);
       }))();
     },
-    search: function search() {
+    format_date: function format_date(value) {
+      if (value) {
+        return moment__WEBPACK_IMPORTED_MODULE_3___default()(String(value)).format("YYYY-MM-DD");
+      }
+    },
+    reload: function reload() {
       var _this4 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
-        var searchResult;
+        var result;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
                 _context4.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_2___default().post("http://127.0.0.1:8000/api/filteremployeedata?birthday=".concat(_this4.searchEmployee.birthday, "&DeptName=").concat(_this4.searchEmployee.DeptName, "&employee=").concat(_this4.searchEmployee.employee));
+                return axios__WEBPACK_IMPORTED_MODULE_2___default().get("http://127.0.0.1:8000/api/getemployee");
 
               case 2:
-                searchResult = _context4.sent;
-                _this4.employeeData = searchResult.data;
-                console.log(employeeData);
+                result = _context4.sent;
+                _this4.employeeData = result.data;
+                console.log(_this4.employeeData);
 
               case 5:
               case "end":
@@ -989,42 +1387,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee4);
       }))();
     },
-    AddEmployeeDetails: function AddEmployeeDetails() {
+    search: function search() {
       var _this5 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
-        var addEmpResult;
+        var searchResult;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
           while (1) {
             switch (_context5.prev = _context5.next) {
               case 0:
                 _context5.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_2___default().post("http://127.0.0.1:8000/api/create/employee", {
-                  empname: _this5.employee.name,
-                  departmentname: _this5.employee.DeptName,
-                  gender: _this5.employee.Gender,
-                  birthday: _this5.employee.Birthday,
-                  nationality: _this5.employee.minzu,
-                  title: _this5.employee.title,
-                  officePhone: _this5.employee.FPHONE,
-                  mobile: _this5.employee.pager,
-                  card: _this5.employee.Card,
-                  registerDevice: _this5.employee.SN,
-                  FP: _this5.employee.FP,
-                  Transactions: _this5.employee.Transactions,
-                  Picture: _this5.employee.Picture
-                });
+                return axios__WEBPACK_IMPORTED_MODULE_2___default().post("http://127.0.0.1:8000/api/filteremployeedata?birthday=".concat(_this5.searchEmployee.birthday, "&departmentname=").concat(_this5.searchEmployee.DeptName, "&employee=").concat(_this5.searchEmployee.employee));
 
               case 2:
-                addEmpResult = _context5.sent;
+                searchResult = _context5.sent;
+                _this5.employeeData = searchResult.data;
+                console.log(employeeData);
 
-                if (addEmpResult.status == 201) {
-                  _this5.reload();
-
-                  _this5.addBtnClear();
-                }
-
-              case 4:
+              case 5:
               case "end":
                 return _context5.stop();
             }
@@ -1032,36 +1412,98 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee5);
       }))();
     },
+    AddEmployeeDetails: function AddEmployeeDetails() {
+      var _this6 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6() {
+        var addEmpResult;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                _this6.$v.$touch();
+
+                if (!(_this6.$v.$pendding || _this6.$v.$error)) {
+                  _context6.next = 3;
+                  break;
+                }
+
+                return _context6.abrupt("return");
+
+              case 3:
+                _context6.next = 5;
+                return axios__WEBPACK_IMPORTED_MODULE_2___default().post("http://127.0.0.1:8000/api/create/employee", {
+                  empname: _this6.employee.empname,
+                  badgenum: _this6.employee.badgenum,
+                  departmentname: _this6.employee.departmentname,
+                  gender: _this6.employee.gender,
+                  birthday: _this6.employee.birthday,
+                  nationality: _this6.employee.nationality,
+                  title: _this6.employee.title,
+                  officePhone: _this6.employee.officephone,
+                  mobile: _this6.employee.mobile,
+                  card: _this6.employee.card // registerDevice: this.employee.SN,
+                  // FP: this.employee.FP,
+                  // Transactions: this.employee.Transactions,
+                  // Picture: this.employee.Picture,
+
+                });
+
+              case 5:
+                addEmpResult = _context6.sent;
+                console.log(addEmpResult);
+
+                if (addEmpResult.status == 200) {
+                  alert("Employee Added Successfully");
+
+                  _this6.reload();
+
+                  _this6.addBtnClear();
+                }
+
+                if (addEmpResult.status == 500) {
+                  alert("Unsuccessfull Create");
+                }
+
+              case 9:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6);
+      }))();
+    },
     addBtnClear: function addBtnClear() {
-      this.employee.name = "", this.employee.DeptName = "", this.employee.Gender = "", this.employee.Birthday = "", this.employee.minzu = "", this.employee.title = "", this.employee.FPHONE = "", this.employee.pager = "", this.employee.Card = "", this.employee.SN = "", this.employee.FP = "", this.employee.Transactions = "", this.employee.Picture = "";
+      this.employee.empname = "", this.employee.departmentname = "", this.employee.gender = "", this.employee.birthday = "", this.employee.nationality = "", this.employee.title = "", this.employee.officephone = "", this.employee.mobile = "", this.employee.card = "", this.employee.badgenum = "";
     }
   },
   mounted: function mounted() {
-    var _this6 = this;
+    var _this7 = this;
 
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6() {
-      var SearchResult;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee7$(_context7) {
         while (1) {
-          switch (_context6.prev = _context6.next) {
+          switch (_context7.prev = _context7.next) {
             case 0:
-              _this6.reload();
+              _this7.reload();
 
-              _context6.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().get("http://localhost:3000/employee");
+              _this7.DepartmentDataDropDown(); // let SearchResult = await axios.get("http://localhost:3000/employee");
+              // this.searchBar = SearchResult.data;
+              // console.log(SearchResult.data);
 
-            case 3:
-              SearchResult = _context6.sent;
-              _this6.searchBar = SearchResult.data;
-              console.log(SearchResult.data);
 
-            case 6:
+            case 2:
             case "end":
-              return _context6.stop();
+              return _context7.stop();
           }
         }
-      }, _callee6);
+      }, _callee7);
     }))();
+  },
+  computed: {
+    rows: function rows() {
+      return this.employeeData.length;
+    }
   }
 });
 
@@ -1461,12 +1903,28 @@ var render = function () {
                   ]
                 ),
                 _vm._v(" "),
-                _vm._m(3),
+                _c("div", { staticClass: "summary" }, [
+                  _c("div", { staticClass: "summary-card" }, [
+                    _c("div", { staticClass: "summary-single" }, [
+                      _vm._m(3),
+                      _vm._v(" "),
+                      _c("div", [
+                        _c("h5", [_vm._v(_vm._s(_vm.employeeData.length))]),
+                        _vm._v(" "),
+                        _c("small", [_vm._v("Number of staff")]),
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(4),
+                    _vm._v(" "),
+                    _vm._m(5),
+                  ]),
+                ]),
               ]),
             ]
           ),
           _vm._v(" "),
-          _vm._m(4),
+          _vm._m(6),
           _vm._v(" "),
           _c(
             "div",
@@ -1481,41 +1939,7 @@ var render = function () {
                   },
                   [
                     _c("div", { staticClass: "row p-3" }, [
-                      _c("div", { staticClass: "col-sm-3" }, [
-                        _c("label", [_vm._v(" Birthday Date: ")]),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.searchEmployee.birthday,
-                              expression: "searchEmployee.birthday",
-                            },
-                          ],
-                          staticClass: "form-control form-control-sm",
-                          attrs: {
-                            type: "date",
-                            placeholder: "Birthday Date",
-                            "aria-label": ".form-control-sm example",
-                          },
-                          domProps: { value: _vm.searchEmployee.birthday },
-                          on: {
-                            input: function ($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.searchEmployee,
-                                "birthday",
-                                $event.target.value
-                              )
-                            },
-                          },
-                        }),
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-sm-3" }, [
+                      _c("div", { staticClass: "col-sm-5" }, [
                         _c("label", [_vm._v("Department Name: ")]),
                         _vm._v(" "),
                         _c("input", {
@@ -1549,7 +1973,7 @@ var render = function () {
                         }),
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-sm-3" }, [
+                      _c("div", { staticClass: "col-sm-5" }, [
                         _c("label", [_vm._v(" Search Employees ")]),
                         _vm._v(" "),
                         _c("input", {
@@ -1583,7 +2007,7 @@ var render = function () {
                         }),
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-sm-3" }, [
+                      _c("div", { staticClass: "col-sm-2" }, [
                         _c("label", { attrs: { for: "" } }),
                         _vm._v(" "),
                         _c(
@@ -1615,7 +2039,7 @@ var render = function () {
                   },
                   [
                     _c("div", { staticClass: "row" }, [
-                      _vm._m(5),
+                      _vm._m(7),
                       _vm._v(" "),
                       _c("div", { staticClass: "col-sm-1" }, [
                         _c(
@@ -1629,15 +2053,10 @@ var render = function () {
                             _c("i", {
                               staticClass: "fa-solid fa-arrow-rotate-left",
                             }),
-                            _vm._v(
-                              "\n                  Reload\n                "
-                            ),
                           ]
                         ),
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-sm-1 text-center" }, [
-                        _vm._m(6),
+                        _vm._v(" "),
+                        _vm._m(8),
                         _vm._v(" "),
                         _c(
                           "div",
@@ -1656,7 +2075,7 @@ var render = function () {
                               { staticClass: "modal-dialog modal-lg" },
                               [
                                 _c("div", { staticClass: "modal-content" }, [
-                                  _vm._m(7),
+                                  _vm._m(9),
                                   _vm._v(" "),
                                   _c("div", { staticClass: "modal-body" }, [
                                     _c("div", { staticClass: "row" }, [
@@ -1664,7 +2083,7 @@ var render = function () {
                                         "div",
                                         { staticClass: "mb-3 col-md-6" },
                                         [
-                                          _vm._m(8),
+                                          _vm._m(10),
                                           _vm._v(" "),
                                           _c("input", {
                                             directives: [
@@ -1672,10 +2091,10 @@ var render = function () {
                                                 name: "model",
                                                 rawName: "v-model.trim",
                                                 value:
-                                                  _vm.$v.employee.employeeName
+                                                  _vm.$v.employee.empname
                                                     .$model,
                                                 expression:
-                                                  "$v.employee.employeeName.$model",
+                                                  "$v.employee.empname.$model",
                                                 modifiers: { trim: true },
                                               },
                                             ],
@@ -1684,7 +2103,7 @@ var render = function () {
                                             class: {
                                               "is-invalid":
                                                 _vm.validationStatus(
-                                                  _vm.$v.employee.employeeName
+                                                  _vm.$v.employee.empname
                                                 ),
                                             },
                                             attrs: {
@@ -1695,8 +2114,7 @@ var render = function () {
                                             },
                                             domProps: {
                                               value:
-                                                _vm.$v.employee.employeeName
-                                                  .$model,
+                                                _vm.$v.employee.empname.$model,
                                             },
                                             on: {
                                               input: function ($event) {
@@ -1704,7 +2122,7 @@ var render = function () {
                                                   return
                                                 }
                                                 _vm.$set(
-                                                  _vm.$v.employee.employeeName,
+                                                  _vm.$v.employee.empname,
                                                   "$model",
                                                   $event.target.value.trim()
                                                 )
@@ -1715,12 +2133,12 @@ var render = function () {
                                             },
                                           }),
                                           _vm._v(" "),
-                                          !_vm.$v.employee.employeeName.required
+                                          !_vm.$v.employee.empname.required
                                             ? _c(
                                                 "div",
                                                 {
                                                   staticClass:
-                                                    "invalid-feedback",
+                                                    "invalid-feedback mt-n3",
                                                 },
                                                 [
                                                   _vm._v(
@@ -1736,7 +2154,7 @@ var render = function () {
                                         "div",
                                         { staticClass: "mb-3 col-md-6" },
                                         [
-                                          _vm._m(9),
+                                          _vm._m(11),
                                           _vm._v(" "),
                                           _c("input", {
                                             directives: [
@@ -1744,10 +2162,10 @@ var render = function () {
                                                 name: "model",
                                                 rawName: "v-model",
                                                 value:
-                                                  _vm.$v.employee.departmentName
+                                                  _vm.$v.employee.departmentname
                                                     .$model,
                                                 expression:
-                                                  "$v.employee.departmentName.$model",
+                                                  "$v.employee.departmentname.$model",
                                               },
                                             ],
                                             staticClass:
@@ -1755,18 +2173,18 @@ var render = function () {
                                             class: {
                                               "is-invalid":
                                                 _vm.validationStatus(
-                                                  _vm.$v.employee.departmentName
+                                                  _vm.$v.employee.departmentname
                                                 ),
                                             },
                                             attrs: {
-                                              type: "text",
+                                              type: "number",
                                               name: "departmentName",
                                               placeholder:
                                                 "Enter Department Name",
                                             },
                                             domProps: {
                                               value:
-                                                _vm.$v.employee.departmentName
+                                                _vm.$v.employee.departmentname
                                                   .$model,
                                             },
                                             on: {
@@ -1776,7 +2194,7 @@ var render = function () {
                                                 }
                                                 _vm.$set(
                                                   _vm.$v.employee
-                                                    .departmentName,
+                                                    .departmentname,
                                                   "$model",
                                                   $event.target.value
                                                 )
@@ -1784,13 +2202,13 @@ var render = function () {
                                             },
                                           }),
                                           _vm._v(" "),
-                                          !_vm.$v.employee.departmentName
+                                          !_vm.$v.employee.departmentname
                                             .required
                                             ? _c(
                                                 "div",
                                                 {
                                                   staticClass:
-                                                    "invalid-feedback",
+                                                    "invalid-feedback mt-n3",
                                                 },
                                                 [
                                                   _vm._v(
@@ -1804,9 +2222,9 @@ var render = function () {
                                       _vm._v(" "),
                                       _c(
                                         "div",
-                                        { staticClass: "mb-3 col-md-6" },
+                                        { staticClass: "mb-3 mt-2 col-md-6" },
                                         [
-                                          _vm._m(10),
+                                          _vm._m(12),
                                           _vm._v(" "),
                                           _c(
                                             "span",
@@ -1817,30 +2235,40 @@ var render = function () {
                                                   {
                                                     name: "model",
                                                     rawName: "v-model",
-                                                    value: _vm.employee.sex,
-                                                    expression: "employee.sex",
+                                                    value:
+                                                      _vm.$v.employee.gender
+                                                        .$model,
+                                                    expression:
+                                                      "$v.employee.gender.$model",
                                                   },
                                                 ],
+                                                class: {
+                                                  "is-invalid":
+                                                    _vm.validationStatus(
+                                                      _vm.$v.employee.gender
+                                                    ),
+                                                },
                                                 staticStyle: {
                                                   "margin-left": "20px",
                                                 },
                                                 attrs: {
                                                   type: "radio",
                                                   id: "male",
-                                                  value: "Male",
+                                                  value: "m",
                                                 },
                                                 domProps: {
                                                   checked: _vm._q(
-                                                    _vm.employee.sex,
-                                                    "Male"
+                                                    _vm.$v.employee.gender
+                                                      .$model,
+                                                    "m"
                                                   ),
                                                 },
                                                 on: {
                                                   change: function ($event) {
                                                     return _vm.$set(
-                                                      _vm.employee,
-                                                      "sex",
-                                                      "Male"
+                                                      _vm.$v.employee.gender,
+                                                      "$model",
+                                                      "m"
                                                     )
                                                   },
                                                 },
@@ -1862,30 +2290,40 @@ var render = function () {
                                                   {
                                                     name: "model",
                                                     rawName: "v-model",
-                                                    value: _vm.employee.sex,
-                                                    expression: "employee.sex",
+                                                    value:
+                                                      _vm.$v.employee.gender
+                                                        .$model,
+                                                    expression:
+                                                      "$v.employee.gender.$model",
                                                   },
                                                 ],
+                                                class: {
+                                                  "is-invalid":
+                                                    _vm.validationStatus(
+                                                      _vm.$v.employee.gender
+                                                    ),
+                                                },
                                                 staticStyle: {
                                                   "margin-left": "20px",
                                                 },
                                                 attrs: {
                                                   type: "radio",
                                                   id: "female",
-                                                  value: "Female",
+                                                  value: "f",
                                                 },
                                                 domProps: {
                                                   checked: _vm._q(
-                                                    _vm.employee.sex,
-                                                    "Female"
+                                                    _vm.$v.employee.gender
+                                                      .$model,
+                                                    "f"
                                                   ),
                                                 },
                                                 on: {
                                                   change: function ($event) {
                                                     return _vm.$set(
-                                                      _vm.employee,
-                                                      "sex",
-                                                      "Female"
+                                                      _vm.$v.employee.gender,
+                                                      "$model",
+                                                      "f"
                                                     )
                                                   },
                                                 },
@@ -1901,6 +2339,21 @@ var render = function () {
                                                 },
                                                 [_vm._v("Female")]
                                               ),
+                                              _vm._v(" "),
+                                              !_vm.$v.employee.gender.required
+                                                ? _c(
+                                                    "div",
+                                                    {
+                                                      staticClass:
+                                                        "invalid-feedback mt-n1",
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "\n                                The Gender is required.\n                              "
+                                                      ),
+                                                    ]
+                                                  )
+                                                : _vm._e(),
                                             ]
                                           ),
                                         ]
@@ -1910,7 +2363,7 @@ var render = function () {
                                         "div",
                                         { staticClass: "mb-3 col-md-6" },
                                         [
-                                          _vm._m(11),
+                                          _vm._m(13),
                                           _vm._v(" "),
                                           _c("span", [
                                             _c("input", {
@@ -1918,20 +2371,30 @@ var render = function () {
                                                 {
                                                   name: "model",
                                                   rawName: "v-model",
-                                                  value: _vm.employee.birthday,
+                                                  value:
+                                                    _vm.$v.employee.birthday
+                                                      .$model,
                                                   expression:
-                                                    "employee.birthday",
+                                                    "$v.employee.birthday.$model",
                                                 },
                                               ],
                                               staticClass:
                                                 "form-control form-control-sm",
+                                              class: {
+                                                "is-invalid":
+                                                  _vm.validationStatus(
+                                                    _vm.$v.employee.birthday
+                                                  ),
+                                              },
                                               attrs: {
                                                 type: "date",
                                                 name: "birthDay",
                                                 placeholder: "Enter Birthday",
                                               },
                                               domProps: {
-                                                value: _vm.employee.birthday,
+                                                value:
+                                                  _vm.$v.employee.birthday
+                                                    .$model,
                                               },
                                               on: {
                                                 input: function ($event) {
@@ -1939,97 +2402,29 @@ var render = function () {
                                                     return
                                                   }
                                                   _vm.$set(
-                                                    _vm.employee,
-                                                    "birthday",
+                                                    _vm.$v.employee.birthday,
+                                                    "$model",
                                                     $event.target.value
                                                   )
                                                 },
                                               },
                                             }),
+                                            _vm._v(" "),
+                                            !_vm.$v.employee.birthday.required
+                                              ? _c(
+                                                  "div",
+                                                  {
+                                                    staticClass:
+                                                      "invalid-feedback mt-n3",
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                The Birthday is required.\n                              "
+                                                    ),
+                                                  ]
+                                                )
+                                              : _vm._e(),
                                           ]),
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "mb-3 col-md-6" },
-                                        [
-                                          _vm._m(12),
-                                          _vm._v(" "),
-                                          _c("input", {
-                                            directives: [
-                                              {
-                                                name: "model",
-                                                rawName: "v-model",
-                                                value: _vm.employee.nationality,
-                                                expression:
-                                                  "employee.nationality",
-                                              },
-                                            ],
-                                            staticClass:
-                                              "form-control form-control-sm",
-                                            attrs: {
-                                              type: "text",
-                                              name: "nationality",
-                                              placeholder: "Enter Nationality",
-                                            },
-                                            domProps: {
-                                              value: _vm.employee.nationality,
-                                            },
-                                            on: {
-                                              input: function ($event) {
-                                                if ($event.target.composing) {
-                                                  return
-                                                }
-                                                _vm.$set(
-                                                  _vm.employee,
-                                                  "nationality",
-                                                  $event.target.value
-                                                )
-                                              },
-                                            },
-                                          }),
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "mb-3 col-md-6" },
-                                        [
-                                          _vm._m(13),
-                                          _vm._v(" "),
-                                          _c("input", {
-                                            directives: [
-                                              {
-                                                name: "model",
-                                                rawName: "v-model",
-                                                value: _vm.employee.title,
-                                                expression: "employee.title",
-                                              },
-                                            ],
-                                            staticClass:
-                                              "form-control form-control-sm",
-                                            attrs: {
-                                              type: "text",
-                                              name: "title",
-                                              placeholder: "Enter Title",
-                                            },
-                                            domProps: {
-                                              value: _vm.employee.title,
-                                            },
-                                            on: {
-                                              input: function ($event) {
-                                                if ($event.target.composing) {
-                                                  return
-                                                }
-                                                _vm.$set(
-                                                  _vm.employee,
-                                                  "title",
-                                                  $event.target.value
-                                                )
-                                              },
-                                            },
-                                          }),
                                         ]
                                       ),
                                       _vm._v(" "),
@@ -2043,21 +2438,32 @@ var render = function () {
                                             directives: [
                                               {
                                                 name: "model",
-                                                rawName: "v-model",
-                                                value: _vm.employee.officePhone,
+                                                rawName: "v-model.trim",
+                                                value:
+                                                  _vm.$v.employee.nationality
+                                                    .$model,
                                                 expression:
-                                                  "employee.officePhone",
+                                                  "$v.employee.nationality.$model",
+                                                modifiers: { trim: true },
                                               },
                                             ],
                                             staticClass:
                                               "form-control form-control-sm",
+                                            class: {
+                                              "is-invalid":
+                                                _vm.validationStatus(
+                                                  _vm.$v.employee.nationality
+                                                ),
+                                            },
                                             attrs: {
-                                              type: "phone",
-                                              name: "officePhone",
-                                              placeholder: "Enter Office Phone",
+                                              type: "text",
+                                              name: "nationality",
+                                              placeholder: "Enter Nationality",
                                             },
                                             domProps: {
-                                              value: _vm.employee.officePhone,
+                                              value:
+                                                _vm.$v.employee.nationality
+                                                  .$model,
                                             },
                                             on: {
                                               input: function ($event) {
@@ -2065,13 +2471,34 @@ var render = function () {
                                                   return
                                                 }
                                                 _vm.$set(
-                                                  _vm.employee,
-                                                  "officePhone",
-                                                  $event.target.value
+                                                  _vm.$v.employee.nationality,
+                                                  "$model",
+                                                  $event.target.value.trim()
                                                 )
+                                              },
+                                              blur: function ($event) {
+                                                return _vm.$forceUpdate()
                                               },
                                             },
                                           }),
+                                          _vm._v(" "),
+                                          !_vm.$v.employee.nationality.required
+                                            ? _c(
+                                                "div",
+                                                {
+                                                  staticClass:
+                                                    "invalid-feedback mt-n3",
+                                                  staticStyle: {
+                                                    width: "auto !important",
+                                                  },
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                              The Nationality is required.\n                            "
+                                                  ),
+                                                ]
+                                              )
+                                            : _vm._e(),
                                         ]
                                       ),
                                       _vm._v(" "),
@@ -2085,21 +2512,30 @@ var render = function () {
                                             directives: [
                                               {
                                                 name: "model",
-                                                rawName: "v-model",
-                                                value: _vm.employee.mobile,
-                                                expression: "employee.mobile",
+                                                rawName: "v-model.trim",
+                                                value:
+                                                  _vm.$v.employee.title.$model,
+                                                expression:
+                                                  "$v.employee.title.$model",
+                                                modifiers: { trim: true },
                                               },
                                             ],
                                             staticClass:
                                               "form-control form-control-sm",
+                                            class: {
+                                              "is-invalid":
+                                                _vm.validationStatus(
+                                                  _vm.$v.employee.title
+                                                ),
+                                            },
                                             attrs: {
-                                              type: "phone",
-                                              name: "mobileNumber",
-                                              placeholder:
-                                                "Enter Mobile Number",
+                                              type: "text",
+                                              name: "title",
+                                              placeholder: "Enter Title",
                                             },
                                             domProps: {
-                                              value: _vm.employee.mobile,
+                                              value:
+                                                _vm.$v.employee.title.$model,
                                             },
                                             on: {
                                               input: function ($event) {
@@ -2107,13 +2543,31 @@ var render = function () {
                                                   return
                                                 }
                                                 _vm.$set(
-                                                  _vm.employee,
-                                                  "mobile",
-                                                  $event.target.value
+                                                  _vm.$v.employee.title,
+                                                  "$model",
+                                                  $event.target.value.trim()
                                                 )
+                                              },
+                                              blur: function ($event) {
+                                                return _vm.$forceUpdate()
                                               },
                                             },
                                           }),
+                                          _vm._v(" "),
+                                          !_vm.$v.employee.title.required
+                                            ? _c(
+                                                "div",
+                                                {
+                                                  staticClass:
+                                                    "invalid-feedback mt-n3",
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                              The Title is required.\n                            "
+                                                  ),
+                                                ]
+                                              )
+                                            : _vm._e(),
                                         ]
                                       ),
                                       _vm._v(" "),
@@ -2128,20 +2582,30 @@ var render = function () {
                                               {
                                                 name: "model",
                                                 rawName: "v-model",
-                                                value: _vm.employee.idCard,
-                                                expression: "employee.idCard",
+                                                value:
+                                                  _vm.$v.employee.officephone
+                                                    .$model,
+                                                expression:
+                                                  "$v.employee.officephone.$model",
                                               },
                                             ],
                                             staticClass:
                                               "form-control form-control-sm",
+                                            class: {
+                                              "is-invalid":
+                                                _vm.validationStatus(
+                                                  _vm.$v.employee.officephone
+                                                ),
+                                            },
                                             attrs: {
-                                              type: "number",
-                                              name: "idCard",
-                                              placeholder:
-                                                "Enter Id Card Number",
+                                              type: "phone",
+                                              name: "officePhone",
+                                              placeholder: "Enter Office Phone",
                                             },
                                             domProps: {
-                                              value: _vm.employee.idCard,
+                                              value:
+                                                _vm.$v.employee.officephone
+                                                  .$model,
                                             },
                                             on: {
                                               input: function ($event) {
@@ -2149,13 +2613,28 @@ var render = function () {
                                                   return
                                                 }
                                                 _vm.$set(
-                                                  _vm.employee,
-                                                  "idCard",
+                                                  _vm.$v.employee.officephone,
+                                                  "$model",
                                                   $event.target.value
                                                 )
                                               },
                                             },
                                           }),
+                                          _vm._v(" "),
+                                          !_vm.$v.employee.officephone.required
+                                            ? _c(
+                                                "div",
+                                                {
+                                                  staticClass:
+                                                    "invalid-feedback mt-n3",
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                              The Office Phone is required.\n                            "
+                                                  ),
+                                                ]
+                                              )
+                                            : _vm._e(),
                                         ]
                                       ),
                                       _vm._v(" "),
@@ -2169,24 +2648,31 @@ var render = function () {
                                             directives: [
                                               {
                                                 name: "model",
-                                                rawName: "v-model",
+                                                rawName: "v-model.trim",
                                                 value:
-                                                  _vm.employee.registerDevice,
+                                                  _vm.$v.employee.mobile.$model,
                                                 expression:
-                                                  "employee.registerDevice",
+                                                  "$v.employee.mobile.$model",
+                                                modifiers: { trim: true },
                                               },
                                             ],
                                             staticClass:
                                               "form-control form-control-sm",
+                                            class: {
+                                              "is-invalid":
+                                                _vm.validationStatus(
+                                                  _vm.$v.employee.mobile
+                                                ),
+                                            },
                                             attrs: {
-                                              type: "text",
-                                              name: "registerationDevice",
+                                              type: "phone",
+                                              name: "mobileNumber",
                                               placeholder:
-                                                "Enter Registration Device",
+                                                "Enter Mobile Number",
                                             },
                                             domProps: {
                                               value:
-                                                _vm.employee.registerDevice,
+                                                _vm.$v.employee.mobile.$model,
                                             },
                                             on: {
                                               input: function ($event) {
@@ -2194,13 +2680,31 @@ var render = function () {
                                                   return
                                                 }
                                                 _vm.$set(
-                                                  _vm.employee,
-                                                  "registerDevice",
-                                                  $event.target.value
+                                                  _vm.$v.employee.mobile,
+                                                  "$model",
+                                                  $event.target.value.trim()
                                                 )
+                                              },
+                                              blur: function ($event) {
+                                                return _vm.$forceUpdate()
                                               },
                                             },
                                           }),
+                                          _vm._v(" "),
+                                          !_vm.$v.employee.mobile.required
+                                            ? _c(
+                                                "div",
+                                                {
+                                                  staticClass:
+                                                    "invalid-feedback mt-n3",
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                              The Mobile is required.\n                            "
+                                                  ),
+                                                ]
+                                              )
+                                            : _vm._e(),
                                         ]
                                       ),
                                       _vm._v(" "),
@@ -2214,20 +2718,31 @@ var render = function () {
                                             directives: [
                                               {
                                                 name: "model",
-                                                rawName: "v-model",
-                                                value: _vm.employee.FP,
-                                                expression: "employee.FP",
+                                                rawName: "v-model.trim",
+                                                value:
+                                                  _vm.$v.employee.card.$model,
+                                                expression:
+                                                  "$v.employee.card.$model",
+                                                modifiers: { trim: true },
                                               },
                                             ],
                                             staticClass:
                                               "form-control form-control-sm",
+                                            class: {
+                                              "is-invalid":
+                                                _vm.validationStatus(
+                                                  _vm.$v.employee.card
+                                                ),
+                                            },
                                             attrs: {
-                                              type: "text",
-                                              name: "FP",
-                                              placeholder: "Enter FP ",
+                                              type: "number",
+                                              name: "idCard",
+                                              placeholder:
+                                                "Enter Id Card Number",
                                             },
                                             domProps: {
-                                              value: _vm.employee.FP,
+                                              value:
+                                                _vm.$v.employee.card.$model,
                                             },
                                             on: {
                                               input: function ($event) {
@@ -2235,13 +2750,31 @@ var render = function () {
                                                   return
                                                 }
                                                 _vm.$set(
-                                                  _vm.employee,
-                                                  "FP",
-                                                  $event.target.value
+                                                  _vm.$v.employee.card,
+                                                  "$model",
+                                                  $event.target.value.trim()
                                                 )
+                                              },
+                                              blur: function ($event) {
+                                                return _vm.$forceUpdate()
                                               },
                                             },
                                           }),
+                                          _vm._v(" "),
+                                          !_vm.$v.employee.card.required
+                                            ? _c(
+                                                "div",
+                                                {
+                                                  staticClass:
+                                                    "invalid-feedback mt-n3",
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                              The Id Card is required.\n                            "
+                                                  ),
+                                                ]
+                                              )
+                                            : _vm._e(),
                                         ]
                                       ),
                                       _vm._v(" "),
@@ -2255,23 +2788,32 @@ var render = function () {
                                             directives: [
                                               {
                                                 name: "model",
-                                                rawName: "v-model",
+                                                rawName: "v-model.trim",
                                                 value:
-                                                  _vm.employee.Transactions,
+                                                  _vm.$v.employee.badgenum
+                                                    .$model,
                                                 expression:
-                                                  "employee.Transactions",
+                                                  "$v.employee.badgenum.$model",
+                                                modifiers: { trim: true },
                                               },
                                             ],
                                             staticClass:
                                               "form-control form-control-sm",
+                                            class: {
+                                              "is-invalid":
+                                                _vm.validationStatus(
+                                                  _vm.$v.employee.badgenum
+                                                ),
+                                            },
                                             attrs: {
-                                              type: "text",
-                                              name: "transactions",
+                                              type: "number",
+                                              name: "badgeNumber",
                                               placeholder:
-                                                "Enter Transactions ",
+                                                "Enter Id Card Number",
                                             },
                                             domProps: {
-                                              value: _vm.employee.Transactions,
+                                              value:
+                                                _vm.$v.employee.badgenum.$model,
                                             },
                                             on: {
                                               input: function ($event) {
@@ -2279,31 +2821,31 @@ var render = function () {
                                                   return
                                                 }
                                                 _vm.$set(
-                                                  _vm.employee,
-                                                  "Transactions",
-                                                  $event.target.value
+                                                  _vm.$v.employee.badgenum,
+                                                  "$model",
+                                                  $event.target.value.trim()
                                                 )
+                                              },
+                                              blur: function ($event) {
+                                                return _vm.$forceUpdate()
                                               },
                                             },
                                           }),
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "mb-3 col-md-12" },
-                                        [
-                                          _vm._m(20),
                                           _vm._v(" "),
-                                          _c("input", {
-                                            staticClass:
-                                              "form-control form-control-sm",
-                                            attrs: {
-                                              type: "file",
-                                              name: "picture",
-                                              "v-model": _vm.employee.Picture,
-                                            },
-                                          }),
+                                          !_vm.$v.employee.badgenum.required
+                                            ? _c(
+                                                "div",
+                                                {
+                                                  staticClass:
+                                                    "invalid-feedback mt-n3",
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                              The Badge Number is required.\n                            "
+                                                  ),
+                                                ]
+                                              )
+                                            : _vm._e(),
                                         ]
                                       ),
                                     ]),
@@ -2313,33 +2855,15 @@ var render = function () {
                                     _c(
                                       "button",
                                       {
-                                        staticClass: "btn btn-danger",
-                                        attrs: {
-                                          type: "button",
-                                          "data-bs-dismiss": "modal",
-                                        },
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                          Close\n                        "
-                                        ),
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "button",
-                                      {
-                                        staticClass: "btn btn-primary",
-                                        attrs: {
-                                          type: "button",
-                                          "data-bs-dismiss": "modal",
-                                        },
+                                        staticClass: "btn btn-primary btn-sm",
+                                        attrs: { type: "button" },
                                         on: { click: _vm.AddEmployeeDetails },
                                       },
                                       [
-                                        _vm._v(
-                                          "\n                          Add\n                        "
-                                        ),
+                                        _c("i", {
+                                          staticClass: "fas fa-plus me-1",
+                                        }),
+                                        _vm._v("Add\n                        "),
                                       ]
                                     ),
                                   ]),
@@ -2351,961 +2875,1191 @@ var render = function () {
                       ]),
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "table-responsive" }, [
-                      _c("table", [
-                        _vm._m(21),
-                        _vm._v(" "),
-                        _c(
-                          "tbody",
-                          _vm._l(_vm.employeeData, function (employees) {
-                            return _c("tr", { key: employees.id }, [
-                              _c("td", [_vm._v(_vm._s(employees.name))]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(employees.DeptName))]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(employees.Gender))]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(employees.Birthday))]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(employees.minzu))]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(employees.title))]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(employees.FPHONE))]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(employees.pager))]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(employees.Card))]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(employees.SN))]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(employees.FP))]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _vm._v(_vm._s(employees.Transactions)),
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(employees.Picture))]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _c(
-                                  "span",
-                                  {
-                                    staticClass: "badge bg-primary",
-                                    staticStyle: { cursor: "pointer" },
-                                    attrs: {
-                                      "data-bs-toggle": "modal",
-                                      "data-bs-target": "#exampleModal1",
-                                    },
-                                    on: {
-                                      click: function ($event) {
-                                        return _vm.updateData(employees.id)
+                    _c(
+                      "div",
+                      { staticClass: "table-responsive" },
+                      [
+                        _c("b-table", {
+                          attrs: {
+                            id: "my-table",
+                            fields: _vm.fields,
+                            striped: "",
+                            hover: "",
+                            items: _vm.employeeData,
+                            "per-page": _vm.perPage,
+                            "current-page": _vm.currentPage,
+                          },
+                          scopedSlots: _vm._u([
+                            {
+                              key: "cell(actions)",
+                              fn: function (row) {
+                                return [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-secondary btn-sm",
+                                      staticStyle: { cursor: "pointer" },
+                                      attrs: {
+                                        "data-bs-toggle": "modal",
+                                        "data-bs-target": "#exampleModal1",
+                                      },
+                                      on: {
+                                        click: function ($event) {
+                                          return _vm.updateData(row.item.userid)
+                                        },
                                       },
                                     },
-                                  },
-                                  [
-                                    _c("i", { staticClass: "fas fa-pen" }),
-                                    _vm._v("Edit"),
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass: "modal fade",
-                                    attrs: {
-                                      id: "exampleModal1",
-                                      tabindex: "-1",
-                                      "aria-labelledby": "exampleModalLabel",
-                                      "aria-hidden": "true",
+                                    [
+                                      _c("i", {
+                                        staticClass: "fas fa-user-edit",
+                                      }),
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "modal fade",
+                                      attrs: {
+                                        id: "exampleModal1",
+                                        tabindex: "-1",
+                                        "aria-labelledby": "exampleModalLabel",
+                                        "aria-hidden": "true",
+                                      },
                                     },
-                                  },
-                                  [
-                                    _c(
-                                      "div",
-                                      { staticClass: "modal-dialog modal-lg" },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "modal-content" },
-                                          [
-                                            _vm._m(22, true),
-                                            _vm._v(" "),
-                                            _c(
-                                              "div",
-                                              { staticClass: "modal-body" },
-                                              [
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      {
-                                                        staticClass:
-                                                          "mb-3 col-md-6",
+                                    [
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass: "modal-dialog modal-lg",
+                                        },
+                                        [
+                                          _c(
+                                            "div",
+                                            { staticClass: "modal-content" },
+                                            [
+                                              _c(
+                                                "div",
+                                                { staticClass: "modal-header" },
+                                                [
+                                                  _c(
+                                                    "h5",
+                                                    {
+                                                      staticClass:
+                                                        "modal-title",
+                                                      attrs: {
+                                                        id: "exampleModalLabel",
                                                       },
-                                                      [
-                                                        _vm._m(23, true),
-                                                        _vm._v(" "),
-                                                        _c("input", {
-                                                          directives: [
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "\n                            Update Department Details\n                          "
+                                                      ),
+                                                    ]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "button",
+                                                    {
+                                                      staticClass:
+                                                        "btn btn-danger btn-sm",
+                                                      attrs: {
+                                                        type: "button",
+                                                        "data-bs-dismiss":
+                                                          "modal",
+                                                      },
+                                                    },
+                                                    [
+                                                      _c("i", {
+                                                        staticClass:
+                                                          "fas fa-times",
+                                                      }),
+                                                    ]
+                                                  ),
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "div",
+                                                { staticClass: "modal-body" },
+                                                [
+                                                  _c(
+                                                    "div",
+                                                    { staticClass: "row" },
+                                                    [
+                                                      _c(
+                                                        "div",
+                                                        {
+                                                          staticClass:
+                                                            "mb-3 col-md-6",
+                                                        },
+                                                        [
+                                                          _c(
+                                                            "label",
                                                             {
-                                                              name: "model",
-                                                              rawName:
-                                                                "v-model",
+                                                              staticStyle: {
+                                                                float: "left",
+                                                                "font-size":
+                                                                  "14px",
+                                                              },
+                                                            },
+                                                            [
+                                                              _vm._v(
+                                                                "Employee Name\n                                "
+                                                              ),
+                                                              _c(
+                                                                "span",
+                                                                {
+                                                                  staticClass:
+                                                                    "text-danger",
+                                                                },
+                                                                [_vm._v("*")]
+                                                              ),
+                                                            ]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c("input", {
+                                                            directives: [
+                                                              {
+                                                                name: "model",
+                                                                rawName:
+                                                                  "v-model.trim",
+                                                                value:
+                                                                  _vm
+                                                                    .updateEmployee
+                                                                    .name,
+                                                                expression:
+                                                                  "updateEmployee.name",
+                                                                modifiers: {
+                                                                  trim: true,
+                                                                },
+                                                              },
+                                                            ],
+                                                            staticClass:
+                                                              "form-control form-control-sm",
+                                                            attrs: {
+                                                              type: "text",
+                                                              name: "employeeName",
+                                                              placeholder:
+                                                                "Enter Employee Name",
+                                                            },
+                                                            domProps: {
                                                               value:
                                                                 _vm
                                                                   .updateEmployee
-                                                                  .employeeName,
-                                                              expression:
-                                                                "updateEmployee.employeeName",
+                                                                  .name,
                                                             },
-                                                          ],
-                                                          staticClass:
-                                                            "form-control form-control-sm",
-                                                          attrs: {
-                                                            type: "text",
-                                                            name: "employeeName",
-                                                            placeholder:
-                                                              "Enter Department Number",
-                                                          },
-                                                          domProps: {
-                                                            value:
-                                                              _vm.updateEmployee
-                                                                .employeeName,
-                                                          },
-                                                          on: {
-                                                            input: function (
-                                                              $event
-                                                            ) {
-                                                              if (
-                                                                $event.target
-                                                                  .composing
+                                                            on: {
+                                                              input: function (
+                                                                $event
                                                               ) {
-                                                                return
-                                                              }
-                                                              _vm.$set(
-                                                                _vm.updateEmployee,
-                                                                "employeeName",
-                                                                $event.target
-                                                                  .value
-                                                              )
+                                                                if (
+                                                                  $event.target
+                                                                    .composing
+                                                                ) {
+                                                                  return
+                                                                }
+                                                                _vm.$set(
+                                                                  _vm.updateEmployee,
+                                                                  "name",
+                                                                  $event.target.value.trim()
+                                                                )
+                                                              },
+                                                              blur: function (
+                                                                $event
+                                                              ) {
+                                                                return _vm.$forceUpdate()
+                                                              },
                                                             },
-                                                          },
-                                                        }),
-                                                      ]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "div",
-                                                      {
-                                                        staticClass:
-                                                          "mb-3 col-md-6",
-                                                      },
-                                                      [
-                                                        _vm._m(24, true),
-                                                        _vm._v(" "),
-                                                        _c("input", {
-                                                          directives: [
+                                                          }),
+                                                        ]
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "div",
+                                                        {
+                                                          staticClass:
+                                                            "mb-3 col-md-6",
+                                                        },
+                                                        [
+                                                          _c(
+                                                            "label",
                                                             {
-                                                              name: "model",
-                                                              rawName:
-                                                                "v-model",
-                                                              value:
-                                                                _vm
-                                                                  .updateEmployee
-                                                                  .departmentName,
-                                                              expression:
-                                                                "updateEmployee.departmentName",
+                                                              staticStyle: {
+                                                                float: "left",
+                                                                "font-size":
+                                                                  "14px",
+                                                              },
                                                             },
-                                                          ],
-                                                          staticClass:
-                                                            "form-control form-control-sm",
-                                                          attrs: {
-                                                            type: "text",
-                                                            name: "departmentName",
-                                                            placeholder:
-                                                              "Enter Department Name",
-                                                          },
-                                                          domProps: {
-                                                            value:
-                                                              _vm.updateEmployee
-                                                                .departmentName,
-                                                          },
-                                                          on: {
-                                                            input: function (
-                                                              $event
-                                                            ) {
-                                                              if (
-                                                                $event.target
-                                                                  .composing
-                                                              ) {
-                                                                return
-                                                              }
-                                                              _vm.$set(
-                                                                _vm.updateEmployee,
-                                                                "departmentName",
-                                                                $event.target
-                                                                  .value
-                                                              )
-                                                            },
-                                                          },
-                                                        }),
-                                                      ]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "div",
-                                                      {
-                                                        staticClass:
-                                                          "mb-3 col-md-6",
-                                                      },
-                                                      [
-                                                        _vm._m(25, true),
-                                                        _vm._v(" "),
-                                                        _c(
-                                                          "span",
-                                                          {
-                                                            staticStyle: {
-                                                              float: "left",
-                                                            },
-                                                          },
-                                                          [
-                                                            _c("input", {
+                                                            [
+                                                              _vm._v(
+                                                                "Department Name\n                                "
+                                                              ),
+                                                              _c(
+                                                                "span",
+                                                                {
+                                                                  staticClass:
+                                                                    "text-danger",
+                                                                },
+                                                                [_vm._v("*")]
+                                                              ),
+                                                            ]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c(
+                                                            "select",
+                                                            {
                                                               directives: [
                                                                 {
                                                                   name: "model",
                                                                   rawName:
-                                                                    "v-model",
+                                                                    "v-model.trim",
                                                                   value:
                                                                     _vm
                                                                       .updateEmployee
-                                                                      .sex,
+                                                                      .defaultdeptid,
                                                                   expression:
-                                                                    "updateEmployee.sex",
+                                                                    "updateEmployee.defaultdeptid",
+                                                                  modifiers: {
+                                                                    trim: true,
+                                                                  },
                                                                 },
                                                               ],
+                                                              staticClass:
+                                                                "form-select form-select-sm",
                                                               staticStyle: {
-                                                                "margin-left":
-                                                                  "20px",
-                                                              },
-                                                              attrs: {
-                                                                type: "radio",
-                                                                id: "Male",
-                                                                value: "Male",
-                                                              },
-                                                              domProps: {
-                                                                checked: _vm._q(
-                                                                  _vm
-                                                                    .updateEmployee
-                                                                    .sex,
-                                                                  "Male"
-                                                                ),
+                                                                "font-size":
+                                                                  "12px",
                                                               },
                                                               on: {
                                                                 change:
                                                                   function (
                                                                     $event
                                                                   ) {
-                                                                    return _vm.$set(
+                                                                    var $$selectedVal =
+                                                                      Array.prototype.filter
+                                                                        .call(
+                                                                          $event
+                                                                            .target
+                                                                            .options,
+                                                                          function (
+                                                                            o
+                                                                          ) {
+                                                                            return o.selected
+                                                                          }
+                                                                        )
+                                                                        .map(
+                                                                          function (
+                                                                            o
+                                                                          ) {
+                                                                            var val =
+                                                                              "_value" in
+                                                                              o
+                                                                                ? o._value
+                                                                                : o.value
+                                                                            return val
+                                                                          }
+                                                                        )
+                                                                    _vm.$set(
                                                                       _vm.updateEmployee,
-                                                                      "sex",
-                                                                      "Male"
+                                                                      "defaultdeptid",
+                                                                      $event
+                                                                        .target
+                                                                        .multiple
+                                                                        ? $$selectedVal
+                                                                        : $$selectedVal[0]
                                                                     )
                                                                   },
                                                               },
-                                                            }),
-                                                            _vm._v(" "),
-                                                            _c(
-                                                              "label",
-                                                              {
+                                                            },
+                                                            [
+                                                              _c(
+                                                                "option",
+                                                                {
+                                                                  attrs: {
+                                                                    hidden: "",
+                                                                  },
+                                                                },
+                                                                [
+                                                                  _vm._v(
+                                                                    "Select Country"
+                                                                  ),
+                                                                ]
+                                                              ),
+                                                              _vm._v(" "),
+                                                              _vm._l(
+                                                                _vm.departmentDropDown,
+                                                                function (
+                                                                  departmentDropdownItem
+                                                                ) {
+                                                                  return _c(
+                                                                    "option",
+                                                                    {
+                                                                      key: departmentDropdownItem.id,
+                                                                      domProps:
+                                                                        {
+                                                                          value:
+                                                                            departmentDropdownItem.DeptID,
+                                                                        },
+                                                                    },
+                                                                    [
+                                                                      _vm._v(
+                                                                        "\n                                  " +
+                                                                          _vm._s(
+                                                                            departmentDropdownItem.DeptName
+                                                                          ) +
+                                                                          "\n                                "
+                                                                      ),
+                                                                    ]
+                                                                  )
+                                                                }
+                                                              ),
+                                                            ],
+                                                            2
+                                                          ),
+                                                        ]
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "div",
+                                                        {
+                                                          staticClass:
+                                                            "mb-3 mt-2 col-md-6",
+                                                        },
+                                                        [
+                                                          _c(
+                                                            "label",
+                                                            {
+                                                              staticStyle: {
+                                                                float: "left",
+                                                                "font-size":
+                                                                  "14px",
+                                                              },
+                                                            },
+                                                            [
+                                                              _vm._v(
+                                                                "Gender\n                                "
+                                                              ),
+                                                              _c(
+                                                                "span",
+                                                                {
+                                                                  staticClass:
+                                                                    "text-danger",
+                                                                },
+                                                                [_vm._v("*")]
+                                                              ),
+                                                            ]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c(
+                                                            "span",
+                                                            {
+                                                              staticStyle: {
+                                                                float: "left",
+                                                              },
+                                                            },
+                                                            [
+                                                              _c("input", {
+                                                                directives: [
+                                                                  {
+                                                                    name: "model",
+                                                                    rawName:
+                                                                      "v-model",
+                                                                    value:
+                                                                      _vm
+                                                                        .updateEmployee
+                                                                        .Gender,
+                                                                    expression:
+                                                                      "updateEmployee.Gender",
+                                                                  },
+                                                                ],
                                                                 staticStyle: {
-                                                                  "font-size":
-                                                                    "13px",
+                                                                  "margin-left":
+                                                                    "20px",
                                                                 },
                                                                 attrs: {
-                                                                  for: "male",
+                                                                  type: "radio",
+                                                                  id: "Male",
+                                                                  value: "m",
                                                                 },
-                                                              },
-                                                              [_vm._v("Male")]
-                                                            ),
-                                                            _vm._v(" "),
-                                                            _c("input", {
-                                                              directives: [
+                                                                domProps: {
+                                                                  checked:
+                                                                    _vm._q(
+                                                                      _vm
+                                                                        .updateEmployee
+                                                                        .Gender,
+                                                                      "m"
+                                                                    ),
+                                                                },
+                                                                on: {
+                                                                  change:
+                                                                    function (
+                                                                      $event
+                                                                    ) {
+                                                                      return _vm.$set(
+                                                                        _vm.updateEmployee,
+                                                                        "Gender",
+                                                                        "m"
+                                                                      )
+                                                                    },
+                                                                },
+                                                              }),
+                                                              _vm._v(" "),
+                                                              _c(
+                                                                "label",
                                                                 {
-                                                                  name: "model",
-                                                                  rawName:
-                                                                    "v-model",
-                                                                  value:
-                                                                    _vm
-                                                                      .updateEmployee
-                                                                      .sex,
-                                                                  expression:
-                                                                    "updateEmployee.sex",
+                                                                  staticStyle: {
+                                                                    "font-size":
+                                                                      "13px",
+                                                                  },
+                                                                  attrs: {
+                                                                    for: "male",
+                                                                  },
                                                                 },
-                                                              ],
+                                                                [_vm._v("Male")]
+                                                              ),
+                                                              _vm._v(" "),
+                                                              _c("input", {
+                                                                directives: [
+                                                                  {
+                                                                    name: "model",
+                                                                    rawName:
+                                                                      "v-model",
+                                                                    value:
+                                                                      _vm
+                                                                        .updateEmployee
+                                                                        .Gender,
+                                                                    expression:
+                                                                      "updateEmployee.Gender",
+                                                                  },
+                                                                ],
+                                                                staticStyle: {
+                                                                  "margin-left":
+                                                                    "20px",
+                                                                },
+                                                                attrs: {
+                                                                  type: "radio",
+                                                                  id: "Female",
+                                                                  value: "f",
+                                                                },
+                                                                domProps: {
+                                                                  checked:
+                                                                    _vm._q(
+                                                                      _vm
+                                                                        .updateEmployee
+                                                                        .Gender,
+                                                                      "f"
+                                                                    ),
+                                                                },
+                                                                on: {
+                                                                  change:
+                                                                    function (
+                                                                      $event
+                                                                    ) {
+                                                                      return _vm.$set(
+                                                                        _vm.updateEmployee,
+                                                                        "Gender",
+                                                                        "f"
+                                                                      )
+                                                                    },
+                                                                },
+                                                              }),
+                                                              _vm._v(" "),
+                                                              _c(
+                                                                "label",
+                                                                {
+                                                                  staticStyle: {
+                                                                    "font-size":
+                                                                      "13px",
+                                                                  },
+                                                                  attrs: {
+                                                                    for: "female",
+                                                                  },
+                                                                },
+                                                                [
+                                                                  _vm._v(
+                                                                    "Female"
+                                                                  ),
+                                                                ]
+                                                              ),
+                                                            ]
+                                                          ),
+                                                        ]
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "div",
+                                                        {
+                                                          staticClass:
+                                                            "mb-3 col-md-6",
+                                                        },
+                                                        [
+                                                          _c(
+                                                            "label",
+                                                            {
                                                               staticStyle: {
-                                                                "margin-left":
-                                                                  "20px",
+                                                                float: "left",
+                                                                "font-size":
+                                                                  "14px",
                                                               },
-                                                              attrs: {
-                                                                type: "radio",
-                                                                id: "Female",
-                                                                value: "Female",
-                                                              },
-                                                              domProps: {
-                                                                checked: _vm._q(
+                                                            },
+                                                            [
+                                                              _vm._v(
+                                                                "\n                                Birthday\n                                "
+                                                              ),
+                                                              _c(
+                                                                "span",
+                                                                {
+                                                                  staticClass:
+                                                                    "text-danger",
+                                                                },
+                                                                [_vm._v("*")]
+                                                              ),
+                                                            ]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c("input", {
+                                                            directives: [
+                                                              {
+                                                                name: "model",
+                                                                rawName:
+                                                                  "v-model",
+                                                                value:
                                                                   _vm
                                                                     .updateEmployee
-                                                                    .sex,
-                                                                  "Female"
-                                                                ),
+                                                                    .Birthday,
+                                                                expression:
+                                                                  "updateEmployee.Birthday",
                                                               },
-                                                              on: {
-                                                                change:
-                                                                  function (
-                                                                    $event
-                                                                  ) {
-                                                                    return _vm.$set(
-                                                                      _vm.updateEmployee,
-                                                                      "sex",
-                                                                      "Female"
-                                                                    )
-                                                                  },
+                                                            ],
+                                                            staticClass:
+                                                              "form-control form-control-sm",
+                                                            attrs: {
+                                                              type: "date",
+                                                              name: "birthDay",
+                                                              placeholder:
+                                                                "Enter Birthday",
+                                                            },
+                                                            domProps: {
+                                                              value:
+                                                                _vm
+                                                                  .updateEmployee
+                                                                  .Birthday,
+                                                            },
+                                                            on: {
+                                                              input: function (
+                                                                $event
+                                                              ) {
+                                                                if (
+                                                                  $event.target
+                                                                    .composing
+                                                                ) {
+                                                                  return
+                                                                }
+                                                                _vm.$set(
+                                                                  _vm.updateEmployee,
+                                                                  "Birthday",
+                                                                  $event.target
+                                                                    .value
+                                                                )
                                                               },
-                                                            }),
-                                                            _vm._v(" "),
-                                                            _c(
-                                                              "label",
+                                                            },
+                                                          }),
+                                                        ]
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "div",
+                                                        {
+                                                          staticClass:
+                                                            "mb-3 col-md-6",
+                                                        },
+                                                        [
+                                                          _c(
+                                                            "label",
+                                                            {
+                                                              staticStyle: {
+                                                                float: "left",
+                                                                "font-size":
+                                                                  "14px",
+                                                              },
+                                                            },
+                                                            [
+                                                              _vm._v(
+                                                                "\n                                Nationality\n                                "
+                                                              ),
+                                                              _c(
+                                                                "span",
+                                                                {
+                                                                  staticClass:
+                                                                    "text-danger",
+                                                                },
+                                                                [_vm._v("*")]
+                                                              ),
+                                                            ]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c("input", {
+                                                            directives: [
                                                               {
-                                                                staticStyle: {
-                                                                  "font-size":
-                                                                    "13px",
-                                                                },
-                                                                attrs: {
-                                                                  for: "female",
+                                                                name: "model",
+                                                                rawName:
+                                                                  "v-model.trim",
+                                                                value:
+                                                                  _vm
+                                                                    .updateEmployee
+                                                                    .minzu,
+                                                                expression:
+                                                                  "updateEmployee.minzu",
+                                                                modifiers: {
+                                                                  trim: true,
                                                                 },
                                                               },
-                                                              [_vm._v("Female")]
-                                                            ),
-                                                          ]
-                                                        ),
-                                                      ]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "div",
-                                                      {
-                                                        staticClass:
-                                                          "mb-3 col-md-6",
-                                                      },
-                                                      [
-                                                        _vm._m(26, true),
-                                                        _vm._v(" "),
-                                                        _c("input", {
-                                                          directives: [
-                                                            {
-                                                              name: "model",
-                                                              rawName:
-                                                                "v-model",
+                                                            ],
+                                                            staticClass:
+                                                              "form-control form-control-sm",
+                                                            attrs: {
+                                                              type: "text",
+                                                              name: "nationality",
+                                                              placeholder:
+                                                                "Enter Nationality",
+                                                            },
+                                                            domProps: {
                                                               value:
                                                                 _vm
                                                                   .updateEmployee
-                                                                  .birthday,
-                                                              expression:
-                                                                "updateEmployee.birthday",
+                                                                  .minzu,
                                                             },
-                                                          ],
-                                                          staticClass:
-                                                            "form-control form-control-sm",
-                                                          attrs: {
-                                                            type: "date",
-                                                            name: "birthDay",
-                                                            placeholder:
-                                                              "Enter Birthday",
-                                                          },
-                                                          domProps: {
-                                                            value:
-                                                              _vm.updateEmployee
-                                                                .birthday,
-                                                          },
-                                                          on: {
-                                                            input: function (
-                                                              $event
-                                                            ) {
-                                                              if (
-                                                                $event.target
-                                                                  .composing
+                                                            on: {
+                                                              input: function (
+                                                                $event
                                                               ) {
-                                                                return
-                                                              }
-                                                              _vm.$set(
-                                                                _vm.updateEmployee,
-                                                                "birthday",
-                                                                $event.target
-                                                                  .value
-                                                              )
-                                                            },
-                                                          },
-                                                        }),
-                                                      ]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "div",
-                                                      {
-                                                        staticClass:
-                                                          "mb-3 col-md-6",
-                                                      },
-                                                      [
-                                                        _vm._m(27, true),
-                                                        _vm._v(" "),
-                                                        _c("input", {
-                                                          directives: [
-                                                            {
-                                                              name: "model",
-                                                              rawName:
-                                                                "v-model",
-                                                              value:
-                                                                _vm
-                                                                  .updateEmployee
-                                                                  .nationality,
-                                                              expression:
-                                                                "updateEmployee.nationality",
-                                                            },
-                                                          ],
-                                                          staticClass:
-                                                            "form-control form-control-sm",
-                                                          attrs: {
-                                                            type: "text",
-                                                            name: "nationality",
-                                                            placeholder:
-                                                              "Enter Nationality",
-                                                          },
-                                                          domProps: {
-                                                            value:
-                                                              _vm.updateEmployee
-                                                                .nationality,
-                                                          },
-                                                          on: {
-                                                            input: function (
-                                                              $event
-                                                            ) {
-                                                              if (
-                                                                $event.target
-                                                                  .composing
+                                                                if (
+                                                                  $event.target
+                                                                    .composing
+                                                                ) {
+                                                                  return
+                                                                }
+                                                                _vm.$set(
+                                                                  _vm.updateEmployee,
+                                                                  "minzu",
+                                                                  $event.target.value.trim()
+                                                                )
+                                                              },
+                                                              blur: function (
+                                                                $event
                                                               ) {
-                                                                return
-                                                              }
-                                                              _vm.$set(
-                                                                _vm.updateEmployee,
-                                                                "nationality",
-                                                                $event.target
-                                                                  .value
-                                                              )
+                                                                return _vm.$forceUpdate()
+                                                              },
                                                             },
-                                                          },
-                                                        }),
-                                                      ]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "div",
-                                                      {
-                                                        staticClass:
-                                                          "mb-3 col-md-6",
-                                                      },
-                                                      [
-                                                        _vm._m(28, true),
-                                                        _vm._v(" "),
-                                                        _c("input", {
-                                                          directives: [
+                                                          }),
+                                                        ]
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "div",
+                                                        {
+                                                          staticClass:
+                                                            "mb-3 col-md-6",
+                                                        },
+                                                        [
+                                                          _c(
+                                                            "label",
                                                             {
-                                                              name: "model",
-                                                              rawName:
-                                                                "v-model",
+                                                              staticStyle: {
+                                                                float: "left",
+                                                                "font-size":
+                                                                  "14px",
+                                                              },
+                                                            },
+                                                            [
+                                                              _vm._v(
+                                                                "\n                                Title\n                                "
+                                                              ),
+                                                              _c(
+                                                                "span",
+                                                                {
+                                                                  staticClass:
+                                                                    "text-danger",
+                                                                },
+                                                                [_vm._v("*")]
+                                                              ),
+                                                            ]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c("input", {
+                                                            directives: [
+                                                              {
+                                                                name: "model",
+                                                                rawName:
+                                                                  "v-model.trim",
+                                                                value:
+                                                                  _vm
+                                                                    .updateEmployee
+                                                                    .title,
+                                                                expression:
+                                                                  "updateEmployee.title",
+                                                                modifiers: {
+                                                                  trim: true,
+                                                                },
+                                                              },
+                                                            ],
+                                                            staticClass:
+                                                              "form-control form-control-sm",
+                                                            attrs: {
+                                                              type: "text",
+                                                              name: "title",
+                                                              placeholder:
+                                                                "Enter Title",
+                                                            },
+                                                            domProps: {
                                                               value:
                                                                 _vm
                                                                   .updateEmployee
                                                                   .title,
-                                                              expression:
-                                                                "updateEmployee.title",
                                                             },
-                                                          ],
-                                                          staticClass:
-                                                            "form-control form-control-sm",
-                                                          attrs: {
-                                                            type: "text",
-                                                            name: "title",
-                                                            placeholder:
-                                                              "Enter Title",
-                                                          },
-                                                          domProps: {
-                                                            value:
-                                                              _vm.updateEmployee
-                                                                .title,
-                                                          },
-                                                          on: {
-                                                            input: function (
-                                                              $event
-                                                            ) {
-                                                              if (
-                                                                $event.target
-                                                                  .composing
+                                                            on: {
+                                                              input: function (
+                                                                $event
                                                               ) {
-                                                                return
-                                                              }
-                                                              _vm.$set(
-                                                                _vm.updateEmployee,
-                                                                "title",
-                                                                $event.target
-                                                                  .value
-                                                              )
+                                                                if (
+                                                                  $event.target
+                                                                    .composing
+                                                                ) {
+                                                                  return
+                                                                }
+                                                                _vm.$set(
+                                                                  _vm.updateEmployee,
+                                                                  "title",
+                                                                  $event.target.value.trim()
+                                                                )
+                                                              },
+                                                              blur: function (
+                                                                $event
+                                                              ) {
+                                                                return _vm.$forceUpdate()
+                                                              },
                                                             },
-                                                          },
-                                                        }),
-                                                      ]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "div",
-                                                      {
-                                                        staticClass:
-                                                          "mb-3 col-md-6",
-                                                      },
-                                                      [
-                                                        _vm._m(29, true),
-                                                        _vm._v(" "),
-                                                        _c("input", {
-                                                          directives: [
+                                                          }),
+                                                        ]
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "div",
+                                                        {
+                                                          staticClass:
+                                                            "mb-3 col-md-6",
+                                                        },
+                                                        [
+                                                          _c(
+                                                            "label",
                                                             {
-                                                              name: "model",
-                                                              rawName:
-                                                                "v-model",
+                                                              staticStyle: {
+                                                                float: "left",
+                                                                "font-size":
+                                                                  "14px",
+                                                              },
+                                                            },
+                                                            [
+                                                              _vm._v(
+                                                                "\n                                Office Phone\n                                "
+                                                              ),
+                                                              _c(
+                                                                "span",
+                                                                {
+                                                                  staticClass:
+                                                                    "text-danger",
+                                                                },
+                                                                [_vm._v("*")]
+                                                              ),
+                                                            ]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c("input", {
+                                                            directives: [
+                                                              {
+                                                                name: "model",
+                                                                rawName:
+                                                                  "v-model",
+                                                                value:
+                                                                  _vm
+                                                                    .updateEmployee
+                                                                    .FPHONE,
+                                                                expression:
+                                                                  "updateEmployee.FPHONE",
+                                                              },
+                                                            ],
+                                                            staticClass:
+                                                              "form-control form-control-sm",
+                                                            attrs: {
+                                                              type: "phone",
+                                                              name: "officePhone",
+                                                              placeholder:
+                                                                "Enter Office Phone",
+                                                            },
+                                                            domProps: {
                                                               value:
                                                                 _vm
                                                                   .updateEmployee
-                                                                  .officePhone,
-                                                              expression:
-                                                                "updateEmployee.officePhone",
+                                                                  .FPHONE,
                                                             },
-                                                          ],
-                                                          staticClass:
-                                                            "form-control form-control-sm",
-                                                          attrs: {
-                                                            type: "phone",
-                                                            name: "officePhone",
-                                                            placeholder:
-                                                              "Enter Office Phone",
-                                                          },
-                                                          domProps: {
-                                                            value:
-                                                              _vm.updateEmployee
-                                                                .officePhone,
-                                                          },
-                                                          on: {
-                                                            input: function (
-                                                              $event
-                                                            ) {
-                                                              if (
-                                                                $event.target
-                                                                  .composing
+                                                            on: {
+                                                              input: function (
+                                                                $event
                                                               ) {
-                                                                return
-                                                              }
-                                                              _vm.$set(
-                                                                _vm.updateEmployee,
-                                                                "officePhone",
-                                                                $event.target
-                                                                  .value
-                                                              )
+                                                                if (
+                                                                  $event.target
+                                                                    .composing
+                                                                ) {
+                                                                  return
+                                                                }
+                                                                _vm.$set(
+                                                                  _vm.updateEmployee,
+                                                                  "FPHONE",
+                                                                  $event.target
+                                                                    .value
+                                                                )
+                                                              },
                                                             },
-                                                          },
-                                                        }),
-                                                      ]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "div",
-                                                      {
-                                                        staticClass:
-                                                          "mb-3 col-md-6",
-                                                      },
-                                                      [
-                                                        _vm._m(30, true),
-                                                        _vm._v(" "),
-                                                        _c("input", {
-                                                          directives: [
+                                                          }),
+                                                        ]
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "div",
+                                                        {
+                                                          staticClass:
+                                                            "mb-3 col-md-6",
+                                                        },
+                                                        [
+                                                          _c(
+                                                            "label",
                                                             {
-                                                              name: "model",
-                                                              rawName:
-                                                                "v-model",
+                                                              staticStyle: {
+                                                                float: "left",
+                                                                "font-size":
+                                                                  "14px",
+                                                              },
+                                                            },
+                                                            [
+                                                              _vm._v(
+                                                                "Mobile\n                                "
+                                                              ),
+                                                              _c(
+                                                                "span",
+                                                                {
+                                                                  staticClass:
+                                                                    "text-danger",
+                                                                },
+                                                                [_vm._v("*")]
+                                                              ),
+                                                            ]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c("input", {
+                                                            directives: [
+                                                              {
+                                                                name: "model",
+                                                                rawName:
+                                                                  "v-model.trim",
+                                                                value:
+                                                                  _vm
+                                                                    .updateEmployee
+                                                                    .pager,
+                                                                expression:
+                                                                  "updateEmployee.pager",
+                                                                modifiers: {
+                                                                  trim: true,
+                                                                },
+                                                              },
+                                                            ],
+                                                            staticClass:
+                                                              "form-control form-control-sm",
+                                                            attrs: {
+                                                              type: "mobile",
+                                                              name: "mobile",
+                                                              placeholder:
+                                                                "Enter Mobile Number",
+                                                            },
+                                                            domProps: {
                                                               value:
                                                                 _vm
                                                                   .updateEmployee
-                                                                  .mobile,
-                                                              expression:
-                                                                "updateEmployee.mobile",
+                                                                  .pager,
                                                             },
-                                                          ],
-                                                          staticClass:
-                                                            "form-control form-control-sm",
-                                                          attrs: {
-                                                            type: "mobile",
-                                                            name: "mobile",
-                                                            placeholder:
-                                                              "Enter Mobile Number",
-                                                          },
-                                                          domProps: {
-                                                            value:
-                                                              _vm.updateEmployee
-                                                                .mobile,
-                                                          },
-                                                          on: {
-                                                            input: function (
-                                                              $event
-                                                            ) {
-                                                              if (
-                                                                $event.target
-                                                                  .composing
+                                                            on: {
+                                                              input: function (
+                                                                $event
                                                               ) {
-                                                                return
-                                                              }
-                                                              _vm.$set(
-                                                                _vm.updateEmployee,
-                                                                "mobile",
-                                                                $event.target
-                                                                  .value
-                                                              )
+                                                                if (
+                                                                  $event.target
+                                                                    .composing
+                                                                ) {
+                                                                  return
+                                                                }
+                                                                _vm.$set(
+                                                                  _vm.updateEmployee,
+                                                                  "pager",
+                                                                  $event.target.value.trim()
+                                                                )
+                                                              },
+                                                              blur: function (
+                                                                $event
+                                                              ) {
+                                                                return _vm.$forceUpdate()
+                                                              },
                                                             },
-                                                          },
-                                                        }),
-                                                      ]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "div",
-                                                      {
-                                                        staticClass:
-                                                          "mb-3 col-md-6",
-                                                      },
-                                                      [
-                                                        _vm._m(31, true),
-                                                        _vm._v(" "),
-                                                        _c("input", {
-                                                          directives: [
+                                                          }),
+                                                        ]
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "div",
+                                                        {
+                                                          staticClass:
+                                                            "mb-3 col-md-6",
+                                                        },
+                                                        [
+                                                          _c(
+                                                            "label",
                                                             {
-                                                              name: "model",
-                                                              rawName:
-                                                                "v-model",
+                                                              staticStyle: {
+                                                                float: "left",
+                                                                "font-size":
+                                                                  "14px",
+                                                              },
+                                                            },
+                                                            [
+                                                              _vm._v(
+                                                                "Id Card\n                                "
+                                                              ),
+                                                              _c(
+                                                                "span",
+                                                                {
+                                                                  staticClass:
+                                                                    "text-danger",
+                                                                },
+                                                                [_vm._v("*")]
+                                                              ),
+                                                            ]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c("input", {
+                                                            directives: [
+                                                              {
+                                                                name: "model",
+                                                                rawName:
+                                                                  "v-model.trim",
+                                                                value:
+                                                                  _vm
+                                                                    .updateEmployee
+                                                                    .Card,
+                                                                expression:
+                                                                  "updateEmployee.Card",
+                                                                modifiers: {
+                                                                  trim: true,
+                                                                },
+                                                              },
+                                                            ],
+                                                            staticClass:
+                                                              "form-control form-control-sm",
+                                                            attrs: {
+                                                              type: "text",
+                                                              name: "idCard",
+                                                              placeholder:
+                                                                "Enter ID Card",
+                                                            },
+                                                            domProps: {
                                                               value:
                                                                 _vm
                                                                   .updateEmployee
-                                                                  .idCard,
-                                                              expression:
-                                                                "updateEmployee.idCard",
+                                                                  .Card,
                                                             },
-                                                          ],
-                                                          staticClass:
-                                                            "form-control form-control-sm",
-                                                          attrs: {
-                                                            type: "text",
-                                                            name: "idCard",
-                                                            placeholder:
-                                                              "Enter ID Card",
-                                                          },
-                                                          domProps: {
-                                                            value:
-                                                              _vm.updateEmployee
-                                                                .idCard,
-                                                          },
-                                                          on: {
-                                                            input: function (
-                                                              $event
-                                                            ) {
-                                                              if (
-                                                                $event.target
-                                                                  .composing
+                                                            on: {
+                                                              input: function (
+                                                                $event
                                                               ) {
-                                                                return
-                                                              }
-                                                              _vm.$set(
-                                                                _vm.updateEmployee,
-                                                                "idCard",
-                                                                $event.target
-                                                                  .value
-                                                              )
+                                                                if (
+                                                                  $event.target
+                                                                    .composing
+                                                                ) {
+                                                                  return
+                                                                }
+                                                                _vm.$set(
+                                                                  _vm.updateEmployee,
+                                                                  "Card",
+                                                                  $event.target.value.trim()
+                                                                )
+                                                              },
+                                                              blur: function (
+                                                                $event
+                                                              ) {
+                                                                return _vm.$forceUpdate()
+                                                              },
                                                             },
-                                                          },
-                                                        }),
-                                                      ]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "div",
-                                                      {
-                                                        staticClass:
-                                                          "mb-3 col-md-6",
-                                                      },
-                                                      [
-                                                        _vm._m(32, true),
-                                                        _vm._v(" "),
-                                                        _c("input", {
-                                                          directives: [
+                                                          }),
+                                                        ]
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "div",
+                                                        {
+                                                          staticClass:
+                                                            "mb-3 col-md-6",
+                                                        },
+                                                        [
+                                                          _c(
+                                                            "label",
                                                             {
-                                                              name: "model",
-                                                              rawName:
-                                                                "v-model",
+                                                              staticStyle: {
+                                                                float: "left",
+                                                                "font-size":
+                                                                  "14px",
+                                                              },
+                                                            },
+                                                            [
+                                                              _vm._v(
+                                                                "Badge Number\n                                "
+                                                              ),
+                                                              _c(
+                                                                "span",
+                                                                {
+                                                                  staticClass:
+                                                                    "text-danger",
+                                                                },
+                                                                [_vm._v("*")]
+                                                              ),
+                                                            ]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c("input", {
+                                                            directives: [
+                                                              {
+                                                                name: "model",
+                                                                rawName:
+                                                                  "v-model.trim",
+                                                                value:
+                                                                  _vm
+                                                                    .updateEmployee
+                                                                    .badgenumber,
+                                                                expression:
+                                                                  "updateEmployee.badgenumber",
+                                                                modifiers: {
+                                                                  trim: true,
+                                                                },
+                                                              },
+                                                            ],
+                                                            staticClass:
+                                                              "form-control form-control-sm",
+                                                            attrs: {
+                                                              type: "number",
+                                                              name: "badgeNumber",
+                                                              placeholder:
+                                                                "Enter Id Card Number",
+                                                            },
+                                                            domProps: {
                                                               value:
                                                                 _vm
                                                                   .updateEmployee
-                                                                  .registerDevice,
-                                                              expression:
-                                                                "updateEmployee.registerDevice",
+                                                                  .badgenumber,
                                                             },
-                                                          ],
-                                                          staticClass:
-                                                            "form-control form-control-sm",
-                                                          attrs: {
-                                                            type: "text",
-                                                            name: "registrationDevice",
-                                                            placeholder:
-                                                              "Enter Registration Device",
-                                                          },
-                                                          domProps: {
-                                                            value:
-                                                              _vm.updateEmployee
-                                                                .registerDevice,
-                                                          },
-                                                          on: {
-                                                            input: function (
-                                                              $event
-                                                            ) {
-                                                              if (
-                                                                $event.target
-                                                                  .composing
+                                                            on: {
+                                                              input: function (
+                                                                $event
                                                               ) {
-                                                                return
-                                                              }
-                                                              _vm.$set(
-                                                                _vm.updateEmployee,
-                                                                "registerDevice",
-                                                                $event.target
-                                                                  .value
-                                                              )
-                                                            },
-                                                          },
-                                                        }),
-                                                      ]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "div",
-                                                      {
-                                                        staticClass:
-                                                          "mb-3 col-md-6",
-                                                      },
-                                                      [
-                                                        _vm._m(33, true),
-                                                        _vm._v(" "),
-                                                        _c("input", {
-                                                          directives: [
-                                                            {
-                                                              name: "model",
-                                                              rawName:
-                                                                "v-model",
-                                                              value:
-                                                                _vm
-                                                                  .updateEmployee
-                                                                  .FP,
-                                                              expression:
-                                                                "updateEmployee.FP",
-                                                            },
-                                                          ],
-                                                          staticClass:
-                                                            "form-control form-control-sm",
-                                                          attrs: {
-                                                            type: "text",
-                                                            name: "FP",
-                                                            placeholder:
-                                                              "Enter FP",
-                                                          },
-                                                          domProps: {
-                                                            value:
-                                                              _vm.updateEmployee
-                                                                .FP,
-                                                          },
-                                                          on: {
-                                                            input: function (
-                                                              $event
-                                                            ) {
-                                                              if (
-                                                                $event.target
-                                                                  .composing
+                                                                if (
+                                                                  $event.target
+                                                                    .composing
+                                                                ) {
+                                                                  return
+                                                                }
+                                                                _vm.$set(
+                                                                  _vm.updateEmployee,
+                                                                  "badgenumber",
+                                                                  $event.target.value.trim()
+                                                                )
+                                                              },
+                                                              blur: function (
+                                                                $event
                                                               ) {
-                                                                return
-                                                              }
-                                                              _vm.$set(
-                                                                _vm.updateEmployee,
-                                                                "FP",
-                                                                $event.target
-                                                                  .value
-                                                              )
+                                                                return _vm.$forceUpdate()
+                                                              },
                                                             },
-                                                          },
-                                                        }),
-                                                      ]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "div",
-                                                      {
-                                                        staticClass:
-                                                          "mb-3 col-md-6",
+                                                          }),
+                                                        ]
+                                                      ),
+                                                    ]
+                                                  ),
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "div",
+                                                { staticClass: "modal-footer" },
+                                                [
+                                                  _c(
+                                                    "button",
+                                                    {
+                                                      staticClass:
+                                                        "btn btn-primary btn-sm",
+                                                      attrs: {
+                                                        type: "button",
+                                                        "data-bs-dismiss":
+                                                          "modal",
                                                       },
-                                                      [
-                                                        _vm._m(34, true),
-                                                        _vm._v(" "),
-                                                        _c("input", {
-                                                          directives: [
-                                                            {
-                                                              name: "model",
-                                                              rawName:
-                                                                "v-model",
-                                                              value:
-                                                                _vm
-                                                                  .updateEmployee
-                                                                  .Transactions,
-                                                              expression:
-                                                                "updateEmployee.Transactions",
-                                                            },
-                                                          ],
-                                                          staticClass:
-                                                            "form-control form-control-sm",
-                                                          attrs: {
-                                                            type: "text",
-                                                            name: "Transactions",
-                                                            placeholder:
-                                                              "Enter Transactions",
-                                                          },
-                                                          domProps: {
-                                                            value:
-                                                              _vm.updateEmployee
-                                                                .Transactions,
-                                                          },
-                                                          on: {
-                                                            input: function (
-                                                              $event
-                                                            ) {
-                                                              if (
-                                                                $event.target
-                                                                  .composing
-                                                              ) {
-                                                                return
-                                                              }
-                                                              _vm.$set(
-                                                                _vm.updateEmployee,
-                                                                "Transactions",
-                                                                $event.target
-                                                                  .value
-                                                              )
-                                                            },
-                                                          },
-                                                        }),
-                                                      ]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "div",
-                                                      {
-                                                        staticClass:
-                                                          "mb-3 col-md-6",
-                                                      },
-                                                      [
-                                                        _vm._m(35, true),
-                                                        _vm._v(" "),
-                                                        _c("input", {
-                                                          staticClass:
-                                                            "form-control form-control-sm",
-                                                          attrs: {
-                                                            type: "file",
-                                                            name: "picture",
-                                                            "v-model":
-                                                              _vm.updateEmployee
-                                                                .picture,
-                                                            placeholder:
-                                                              "Enter Transactions",
-                                                          },
-                                                        }),
-                                                      ]
-                                                    ),
-                                                  ]
-                                                ),
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "div",
-                                              { staticClass: "modal-footer" },
-                                              [
-                                                _c(
-                                                  "button",
-                                                  {
-                                                    staticClass:
-                                                      "btn btn-danger",
-                                                    attrs: {
-                                                      type: "button",
-                                                      "data-bs-dismiss":
-                                                        "modal",
-                                                    },
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                Close\n                              "
-                                                    ),
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "button",
-                                                  {
-                                                    staticClass:
-                                                      "btn btn-primary",
-                                                    attrs: {
-                                                      type: "button",
-                                                      "data-bs-dismiss":
-                                                        "modal",
-                                                    },
-                                                    on: {
-                                                      click: function ($event) {
-                                                        return _vm.UpdateEmployeeData(
-                                                          _vm.updateEmployee.id
-                                                        )
+                                                      on: {
+                                                        click: function (
+                                                          $event
+                                                        ) {
+                                                          return _vm.UpdateEmployeeData(
+                                                            _vm.updateEmployee
+                                                              .userid
+                                                          )
+                                                        },
                                                       },
                                                     },
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                Update\n                              "
-                                                    ),
-                                                  ]
-                                                ),
-                                              ]
-                                            ),
-                                          ]
-                                        ),
-                                      ]
-                                    ),
-                                  ]
-                                ),
-                              ]),
-                            ])
-                          }),
-                          0
-                        ),
-                      ]),
-                    ]),
+                                                    [
+                                                      _c("i", {
+                                                        staticClass:
+                                                          "fas fa-user-edit",
+                                                      }),
+                                                      _vm._v(
+                                                        "\n                            Update\n                          "
+                                                      ),
+                                                    ]
+                                                  ),
+                                                ]
+                                              ),
+                                            ]
+                                          ),
+                                        ]
+                                      ),
+                                    ]
+                                  ),
+                                ]
+                              },
+                            },
+                          ]),
+                        }),
+                        _vm._v(" "),
+                        _c("b-pagination", {
+                          staticClass: "justify-content-center",
+                          attrs: {
+                            "total-rows": _vm.rows,
+                            "per-page": _vm.perPage,
+                            "aria-controls": "my-table",
+                          },
+                          model: {
+                            value: _vm.currentPage,
+                            callback: function ($$v) {
+                              _vm.currentPage = $$v
+                            },
+                            expression: "currentPage",
+                          },
+                        }),
+                      ],
+                      1
+                    ),
                   ]
                 ),
               ]),
@@ -3341,9 +4095,8 @@ var staticRenderFns = [
             _c(
               "button",
               {
-                staticClass: "badge badge-primary float-right mt-3",
+                staticClass: "badge badge-primary text-dark mt-3",
                 attrs: {
-                  type: "button",
                   "data-toggle": "collapse",
                   "data-target": "#collapseExample",
                   "aria-expanded": "false",
@@ -3377,37 +4130,33 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "summary" }, [
-      _c("div", { staticClass: "summary-card" }, [
-        _c("div", { staticClass: "summary-single" }, [
-          _c("span", [_c("i", { staticClass: "fas fa-user-tie" })]),
-          _vm._v(" "),
-          _c("div", [
-            _c("h5", [_vm._v("196")]),
-            _vm._v(" "),
-            _c("small", [_vm._v("Number of staff")]),
-          ]),
-        ]),
+    return _c("span", [_c("i", { staticClass: "fas fa-user-tie" })])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "summary-single" }, [
+      _c("span", [_c("i", { staticClass: "fas fa-ban" })]),
+      _vm._v(" "),
+      _c("div", [
+        _c("h5", [_vm._v("16")]),
         _vm._v(" "),
-        _c("div", { staticClass: "summary-single" }, [
-          _c("span", [_c("i", { staticClass: "fas fa-ban" })]),
-          _vm._v(" "),
-          _c("div", [
-            _c("h5", [_vm._v("16")]),
-            _vm._v(" "),
-            _c("small", [_vm._v("Number of leave")]),
-          ]),
-        ]),
+        _c("small", [_vm._v("Number of leave")]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "summary-single" }, [
+      _c("span", [_c("i", { staticClass: "far fa-grin-alt" })]),
+      _vm._v(" "),
+      _c("div", [
+        _c("h5", [_vm._v("12")]),
         _vm._v(" "),
-        _c("div", { staticClass: "summary-single" }, [
-          _c("span", [_c("i", { staticClass: "far fa-grin-alt" })]),
-          _vm._v(" "),
-          _c("div", [
-            _c("h5", [_vm._v("12")]),
-            _vm._v(" "),
-            _c("small", [_vm._v("Profile update request")]),
-          ]),
-        ]),
+        _c("small", [_vm._v("Profile update request")]),
       ]),
     ])
   },
@@ -3434,7 +4183,7 @@ var staticRenderFns = [
             _c(
               "button",
               {
-                staticClass: "badge badge-primary float-right mt-3",
+                staticClass: "badge badge-primary text-dark mt-3",
                 attrs: {
                   type: "button",
                   "data-toggle": "collapse",
@@ -3454,7 +4203,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-10" }, [
+    return _c("div", { staticClass: "col-sm-11" }, [
       _c("h3", [_vm._v("Employee Activity")]),
     ])
   },
@@ -3465,17 +4214,14 @@ var staticRenderFns = [
     return _c(
       "button",
       {
-        staticClass: "btn btn-primary btn-sm mt-3",
+        staticClass: "btn btn-primary btn-sm mt-3 ml-3",
         attrs: {
           type: "button",
           "data-bs-toggle": "modal",
           "data-bs-target": "#exampleModal",
         },
       },
-      [
-        _c("i", { staticClass: "fas fa-plus" }),
-        _vm._v("\n                  Add\n                "),
-      ]
+      [_c("i", { staticClass: "fas fa-plus" })]
     )
   },
   function () {
@@ -3491,6 +4237,15 @@ var staticRenderFns = [
             "\n                          Add Employee Details\n                        "
           ),
         ]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-danger btn-sm",
+          attrs: { type: "button", "data-bs-dismiss": "modal" },
+        },
+        [_c("i", { staticClass: "fas fa-times" })]
       ),
     ])
   },
@@ -3619,272 +4374,7 @@ var staticRenderFns = [
       "label",
       { staticStyle: { float: "left", "font-size": "14px" } },
       [
-        _vm._v("Registration Device\n                              "),
-        _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "label",
-      { staticStyle: { float: "left", "font-size": "14px" } },
-      [_vm._v("FP "), _c("span", { staticClass: "text-danger" }, [_vm._v("*")])]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "label",
-      { staticStyle: { float: "left", "font-size": "14px" } },
-      [
-        _vm._v("Transactions\n                              "),
-        _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "label",
-      { staticStyle: { float: "left", "font-size": "14px" } },
-      [
-        _vm._v("Picture\n                              "),
-        _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("Employee Name")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Department Name")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Sex")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Birthday")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Nationality")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Title")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Office Phone")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Mobile")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Id Card")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Registration Device")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("FP")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Transactions")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Picture")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Action")]),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header" }, [
-      _c(
-        "h5",
-        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
-        [
-          _vm._v(
-            "\n                                Update Department Details\n                              "
-          ),
-        ]
-      ),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "label",
-      { staticStyle: { float: "left", "font-size": "14px" } },
-      [
-        _vm._v("Employee Name\n                                    "),
-        _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "label",
-      { staticStyle: { float: "left", "font-size": "14px" } },
-      [
-        _vm._v("Department Name\n                                    "),
-        _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "label",
-      { staticStyle: { float: "left", "font-size": "14px" } },
-      [
-        _vm._v("Gender\n                                    "),
-        _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "label",
-      { staticStyle: { float: "left", "font-size": "14px" } },
-      [
-        _vm._v(
-          "\n                                    Birthday\n                                    "
-        ),
-        _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "label",
-      { staticStyle: { float: "left", "font-size": "14px" } },
-      [
-        _vm._v(
-          "\n                                    Nationality\n                                    "
-        ),
-        _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "label",
-      { staticStyle: { float: "left", "font-size": "14px" } },
-      [
-        _vm._v(
-          "\n                                    Title\n                                    "
-        ),
-        _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "label",
-      { staticStyle: { float: "left", "font-size": "14px" } },
-      [
-        _vm._v(
-          "\n                                    Office Phone\n                                    "
-        ),
-        _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "label",
-      { staticStyle: { float: "left", "font-size": "14px" } },
-      [
-        _vm._v("Mobile\n                                    "),
-        _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "label",
-      { staticStyle: { float: "left", "font-size": "14px" } },
-      [
-        _vm._v("Id Card\n                                    "),
-        _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "label",
-      { staticStyle: { float: "left", "font-size": "14px" } },
-      [
-        _vm._v("Registration Device\n                                    "),
-        _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "label",
-      { staticStyle: { float: "left", "font-size": "14px" } },
-      [
-        _vm._v("FP\n                                    "),
-        _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "label",
-      { staticStyle: { float: "left", "font-size": "14px" } },
-      [
-        _vm._v("Transactions\n                                    "),
-        _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "label",
-      { staticStyle: { float: "left", "font-size": "14px" } },
-      [
-        _vm._v("Picture\n                                    "),
+        _vm._v("Badge Number\n                              "),
         _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
       ]
     )

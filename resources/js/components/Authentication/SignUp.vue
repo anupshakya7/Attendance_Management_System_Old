@@ -19,22 +19,45 @@
                   class="form-control form-control-sm"
                   placeholder="Enter Username"
                 />
-                <div v-if="!$v.username.required" class="invalid-feedback">
+                <div
+                  v-if="!$v.username.required"
+                  class="invalid-feedback mt-n3"
+                >
                   The Username field is required.
                 </div>
               </div>
-              <div class="mb-3 col-md-12">
-                <label>Name <span class="text-danger">*</span></label>
+              <div class="mb-3 col-md-6">
+                <label>First Name <span class="text-danger">*</span></label>
+                <input
+                  type="text"
+                  name="fname"
+                  v-model="$v.first_name.$model"
+                  :class="{ 'is-invalid': validationStatus($v.first_name) }"
+                  class="form-control form-control-sm"
+                  placeholder="Enter First Name"
+                />
+                <div
+                  v-if="!$v.first_name.required"
+                  class="invalid-feedback mt-n3"
+                >
+                  The First Name field is required.
+                </div>
+              </div>
+              <div class="mb-3 col-md-6">
+                <label>Last Name <span class="text-danger">*</span></label>
                 <input
                   type="text"
                   name="name"
-                  v-model="$v.name.$model"
-                  :class="{ 'is-invalid': validationStatus($v.name) }"
+                  v-model="$v.last_name.$model"
+                  :class="{ 'is-invalid': validationStatus($v.last_name) }"
                   class="form-control form-control-sm"
-                  placeholder="Enter Name"
+                  placeholder="Enter Last Name"
                 />
-                <div v-if="!$v.name.required" class="invalid-feedback">
-                  The Name field is required.
+                <div
+                  v-if="!$v.last_name.required"
+                  class="invalid-feedback mt-n3"
+                >
+                  The Last Name field is required.
                 </div>
               </div>
               <div class="mb-3 col-md-12">
@@ -47,10 +70,10 @@
                   class="form-control form-control-sm"
                   placeholder="Enter Email Address"
                 />
-                <div v-if="!$v.email.required" class="invalid-feedback">
+                <div v-if="!$v.email.required" class="invalid-feedback mt-n3">
                   The Email Address is required.
                 </div>
-                <div v-if="!$v.email.email" class="invalid-feedback">
+                <div v-if="!$v.email.email" class="invalid-feedback mt-n3">
                   The Email is not validate.
                 </div>
               </div>
@@ -65,14 +88,23 @@
                   class="form-control form-control-sm"
                   placeholder="Enter Password"
                 />
-                <div v-if="!$v.password.required" class="invalid-feedback">
+                <div
+                  v-if="!$v.password.required"
+                  class="invalid-feedback mt-n3"
+                >
                   The password is required.
                 </div>
-                <div v-if="!$v.password.minLength" class="invalid-feedback">
+                <div
+                  v-if="!$v.password.minLength"
+                  class="invalid-feedback mt-n3"
+                >
                   You must have atleast
                   {{ $v.password.$params.minLength.min }} letters.
                 </div>
-                <div v-if="!$v.password.maxLength" class="invalid-feedback">
+                <div
+                  v-if="!$v.password.maxLength"
+                  class="invalid-feedback mt-n3"
+                >
                   You must not have greate than
                   {{ $v.password.$params.maxLength.max }} letters.
                 </div>
@@ -148,7 +180,8 @@ export default {
   data() {
     return {
       username: "",
-      name: "",
+      first_name: "",
+      last_name: "",
       email: "",
       password: "",
       is_staff: "",
@@ -158,7 +191,8 @@ export default {
   },
   validations: {
     username: { required },
-    name: { required },
+    first_name: { required },
+    last_name: { required },
     email: { required, email },
     password: { required, minLength: minLength(6), maxLength: maxLength(18) },
   },
@@ -188,13 +222,13 @@ export default {
       if (this.$v.pendding || this.$v.$error) return;
       let result = await axios.post("http://127.0.0.1:8000/api/register", {
         username: this.username,
-        name: this.name,
+        first_name: this.first_name,
+        last_name: this.last_name,
         email: this.email,
         password: this.password,
         is_staff: this.is_staff,
         is_active: this.is_active,
         is_superuser: this.is_superuser,
-        last_login: this.last_login,
       });
       console.log(result);
       if (result.status == 201) {

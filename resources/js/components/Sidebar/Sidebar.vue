@@ -1,10 +1,13 @@
 <template>
   <div class="sidebar">
     <div class="sidebar-header">
-      <h3 class="brand">
-        <span><i class="fas fa-feather"></i></span>
-        <span>AttendMS</span>
-      </h3>
+      <router-link to="/" id="sidenavHeader"
+        ><h3 class="brand">
+          <span><i class="fas fa-feather"></i></span>
+          <span>AttendMS</span>
+        </h3>
+      </router-link>
+
       <span for="sidebar-toggle" style="cursor: pointer">
         <i class="fas fa-bars"></i>
       </span>
@@ -22,34 +25,44 @@
             </span>
           </a>
           <div class="sub-menu">
-            <router-link
-              to="/department"
-              active-class="active"
-              exact
-              class="sub-item"
-              >Department</router-link
-            >
-            <router-link
-              to="/employee"
-              active-class="active"
-              exact
-              class="sub-item"
-              >Employee</router-link
-            >
-            <router-link
-              to="/transaction"
-              active-class="active"
-              exact
-              class="sub-item"
-              >Transaction</router-link
-            >
-            <router-link
-              to="/advanceSearch"
-              active-class="active"
-              exact
-              class="sub-item"
-              >Advance Search</router-link
-            >
+            <ul>
+              <li>
+                <router-link
+                  to="/department"
+                  active-class="active"
+                  exact
+                  class="sub-item"
+                  >Department</router-link
+                >
+              </li>
+              <li>
+                <router-link
+                  to="/employee"
+                  active-class="active"
+                  exact
+                  class="sub-item"
+                  >Employee</router-link
+                >
+              </li>
+              <li>
+                <router-link
+                  to="/transaction"
+                  active-class="active"
+                  exact
+                  class="sub-item"
+                  >Transaction</router-link
+                >
+              </li>
+              <li>
+                <router-link
+                  to="/advanceSearch"
+                  active-class="active"
+                  exact
+                  class="sub-item"
+                  >Advance Search</router-link
+                >
+              </li>
+            </ul>
           </div>
         </li>
         <!-- <li>
@@ -145,14 +158,22 @@ export default {
 .sidebar-menu .sub-menu {
   display: flex;
   flex-direction: column;
-  padding-left: 50px;
-  line-height: 40px;
+  padding-left: 45px;
+  margin-top: 15px;
+  line-height: 15px;
+}
+
+.sidebar-menu .sub-menu ul li {
+  list-style-type: square;
 }
 
 #sidebar-toggle {
   display: none;
 }
 
+#sidenavHeader {
+  color: white;
+}
 .sidebar {
   height: 100%;
   width: 240px;
@@ -190,7 +211,7 @@ export default {
 .sidebar a {
   text-decoration: none;
   color: #fff;
-  font-size: 0.9rem;
+  /* font-size: 0.9rem; */
 }
 
 .sidebar a:hover {
